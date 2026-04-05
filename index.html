@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYTHERA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Atmospheric layers -->
+  <div class="atmosphere">
+    <div class="mist mist--top"></div>
+    <div class="mist mist--bottom"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__wordmark">MYTHERA</div>
+    <div class="nav__links">
+      <a href="#about" class="nav__link">About</a>
+      <a href="#worlds" class="nav__link">Worlds</a>
+      <a href="#enter" class="nav__link">Enter</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__content">
+      <h1 class="hero__title">MYTHERA</h1>
+      <p class="hero__subtitle">An interpretive world of myth, silence, and meaning</p>
+      <div class="hero__line"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section--about" id="about">
+    <div class="section__inner">
+      <h2 class="section__heading">What lies beneath</h2>
+      <p class="section__text">
+        Mythera is not a product. It is a place — a studio of interpretive worlds
+        built from philosophy, myth, and the architecture of thought. Here, stories
+        are not consumed. They are entered, questioned, and lived.
+      </p>
+      <p class="section__text">
+        We build environments where meaning emerges from atmosphere.
+        Where silence holds as much weight as words.
+        Where every surface carries the residue of something ancient.
+      </p>
+    </div>
+  </section>
+
+  <!-- Worlds -->
+  <section class="section section--worlds" id="worlds">
+    <div class="section__inner">
+      <h2 class="section__heading">Worlds</h2>
+      <div class="worlds">
+        <article class="world">
+          <div class="world__glyph">I</div>
+          <h3 class="world__title">The Sunken Court</h3>
+          <p class="world__desc">A submerged courtyard where memory pools like water between cracked stone.</p>
+        </article>
+        <article class="world">
+          <div class="world__glyph">II</div>
+          <h3 class="world__title">The Root Archive</h3>
+          <p class="world__desc">A forest ruin where philosophy grows through the architecture of forgotten temples.</p>
+        </article>
+        <article class="world">
+          <div class="world__glyph">III</div>
+          <h3 class="world__title">The Still Threshold</h3>
+          <p class="world__desc">A liminal space at the edge of understanding, where silence becomes structure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enter -->
+  <section class="section section--enter" id="enter">
+    <div class="section__inner section__inner--centered">
+      <h2 class="section__heading">Enter</h2>
+      <p class="section__text">
+        Mythera opens to those who seek it. Leave your name at the threshold.
+      </p>
+      <form class="enter-form" onsubmit="return false;">
+        <input type="email" class="enter-form__input" placeholder="your@email.com" aria-label="Email address">
+        <button type="submit" class="enter-form__button">Request Entry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__line"></div>
+    <p class="footer__text">MYTHERA &mdash; An interpretive studio</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
