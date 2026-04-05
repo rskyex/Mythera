@@ -1,5 +1,5 @@
 /* =============================================
-   MYTHERA — Phase 2: Depth & spatial interaction
+   MYTHERA — Interaction layer
    ============================================= */
 
 (function () {
@@ -14,7 +14,7 @@
       '.section__heading, .work, ' +
       '.archive__intro, .archive__branch, .archive__coda, ' +
       '.forms__intro, .forms-field, ' +
-      '.closing__symbol, .closing__statement, .closing__links'
+      '.closing__rule, .closing__statement, .closing__links'
     );
 
     targets.forEach(function (el) {
@@ -97,12 +97,14 @@
 
       requestAnimationFrame(function () {
         var scrollY = window.scrollY;
-        var opacity = Math.max(0, 1 - scrollY / 600);
-        content.style.opacity = opacity;
+        // Ease-out curve for smoother fade
+        var progress = Math.min(1, scrollY / 700);
+        var opacity = 1 - progress * progress;
+        content.style.opacity = Math.max(0, opacity);
 
         if (scrollCue) {
-          var cueOpacity = Math.max(0, 1 - scrollY / 200);
-          scrollCue.style.opacity = cueOpacity * 0.6;
+          var cueProgress = Math.min(1, scrollY / 250);
+          scrollCue.style.opacity = Math.max(0, (1 - cueProgress) * 0.5);
         }
 
         ticking = false;
