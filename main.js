@@ -12,7 +12,8 @@
       '.manifesto__lead, .manifesto__body, ' +
       '.realm__content, ' +
       '.section__heading, .work, ' +
-      '.forms-field, ' +
+      '.archive__intro, .archive__branch, .archive__coda, ' +
+      '.forms__intro, .forms-field, ' +
       '.closing__symbol, .closing__statement, .closing__links'
     );
 
@@ -20,9 +21,9 @@
       el.classList.add('reveal');
     });
 
-    // Mark works grid for staggered reveal
-    var worksGrid = document.querySelector('.works-grid');
-    if (worksGrid) worksGrid.classList.add('reveal-stagger');
+    // Mark works list for staggered reveal
+    var worksList = document.querySelector('.works-list');
+    if (worksList) worksList.classList.add('reveal-stagger');
 
     if (!('IntersectionObserver' in window)) {
       targets.forEach(function (el) { el.classList.add('is-visible'); });

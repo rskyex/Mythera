@@ -657,6 +657,15 @@ a {
   max-width: 48ch;
 }
 
+.realm__works {
+  margin-top: var(--space-md);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
 .realm + .realm {
   border-top: 1px solid var(--color-border);
 }
@@ -686,23 +695,24 @@ a {
   margin-bottom: var(--space-xl);
 }
 
-.works-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--color-border);
+.works-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .work {
   position: relative;
-  padding: var(--space-lg);
-  background: var(--color-bg);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
   transition:
     background 0.8s ease,
-    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
-    box-shadow 0.8s ease;
+    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
   overflow: hidden;
   isolation: isolate;
+}
+
+.work:last-child {
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* Inner atmospheric glow — reveals on hover */
@@ -711,9 +721,9 @@ a {
   inset: 0;
   opacity: 0;
   background: radial-gradient(
-    ellipse 80% 80% at 50% 50%,
-    rgba(22, 46, 40, 0.08) 0%,
-    transparent 70%
+    ellipse 100% 100% at 0% 50%,
+    rgba(22, 46, 40, 0.06) 0%,
+    transparent 60%
   );
   transition: opacity 1s ease;
   z-index: 0;
@@ -721,16 +731,20 @@ a {
 }
 
 .work:hover {
-  background: var(--color-surface);
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 40px rgba(6, 10, 8, 0.4),
-    0 2px 12px rgba(6, 10, 8, 0.3);
-  z-index: 1;
+  transform: translateX(8px);
 }
 
 .work:hover .work__glow {
   opacity: 1;
+}
+
+.work__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+  position: relative;
+  z-index: 1;
 }
 
 .work__format {
@@ -742,8 +756,15 @@ a {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-accent-dim);
-  margin-bottom: var(--space-sm);
   transition: color 0.8s ease;
+}
+
+.work__realm {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .work:hover .work__format {
@@ -753,8 +774,8 @@ a {
 .work__title {
   position: relative;
   z-index: 1;
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 300;
   color: var(--color-text-bright);
   letter-spacing: 0.04em;
   margin-bottom: var(--space-sm);
@@ -763,16 +784,91 @@ a {
 .work__desc {
   position: relative;
   z-index: 1;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
   font-weight: 300;
   color: var(--color-text-dim);
-  line-height: 1.8;
-  max-width: 40ch;
+  line-height: 1.9;
+  max-width: 56ch;
 }
 
 
 /* ============================================
-   5. OUTPUT FORMS
+   5. THE WIDER WORLD / ARCHIVE
+   ============================================ */
+
+.section--archive {
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.section__atmosphere--archive {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(13, 31, 26, 0.05) 0%, transparent 65%);
+}
+
+.archive__intro {
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-dim);
+  line-height: 1.8;
+  margin-bottom: var(--space-xl);
+  max-width: 52ch;
+}
+
+.archive__constellation {
+  display: flex;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.archive__branch {
+  flex: 1;
+}
+
+.archive__branch-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent-dim);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.archive__nodes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.archive__node {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 300;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+  padding-left: var(--space-sm);
+  border-left: 1px solid rgba(38, 51, 48, 0.2);
+  transition: color 0.5s ease, border-color 0.5s ease;
+}
+
+.archive__node:hover {
+  color: var(--color-text-dim);
+  border-left-color: var(--color-accent-dim);
+}
+
+.archive__coda {
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================
+   6. OUTPUT FORMS / STUDIO LOGIC
    ============================================ */
 
 .section--forms {
@@ -780,7 +876,17 @@ a {
 }
 
 .section--forms .section__heading {
+  margin-bottom: var(--space-sm);
+}
+
+.forms__intro {
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-dim);
+  line-height: 1.8;
   margin-bottom: var(--space-lg);
+  max-width: 48ch;
 }
 
 .forms-field {
@@ -921,9 +1027,15 @@ a {
   .section--manifesto,
   .section--works,
   .section--forms,
-  .section--closing {
+  .section--closing,
+  .section--archive {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
+  }
+
+  .archive__constellation {
+    flex-direction: column;
+    gap: var(--space-lg);
   }
 
   .realm__content {
@@ -939,12 +1051,8 @@ a {
 
   .realm__edge { display: none; }
 
-  .works-grid {
-    grid-template-columns: 1fr;
-  }
-
   .work {
-    padding: var(--space-md);
+    padding: var(--space-md) 0;
   }
 
   .closing__links {
