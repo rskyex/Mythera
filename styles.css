@@ -1,5 +1,5 @@
 /* =============================================
-   MYTHERA — Phase 1: Core Structure
+   MYTHERA — Phase 2: Depth & Spatial Layering
    ============================================= */
 
 :root {
@@ -59,6 +59,60 @@ a {
 }
 
 
+/* ============================================
+   GLOBAL ATMOSPHERE
+   ============================================ */
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.atmosphere__mist {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.atmosphere__mist--top {
+  top: 0;
+  height: 20vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 14, 12, 0.7) 0%,
+    rgba(10, 14, 12, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.atmosphere__mist--bottom {
+  bottom: 0;
+  height: 15vh;
+  background: linear-gradient(
+    to top,
+    rgba(10, 14, 12, 0.6) 0%,
+    transparent 100%
+  );
+}
+
+/* Film grain overlay — very faint texture */
+.atmosphere__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image:
+    repeating-conic-gradient(
+      rgba(200, 204, 201, 0.08) 0% 25%,
+      transparent 0% 50%
+    );
+  background-size: 4px 4px;
+  mix-blend-mode: overlay;
+}
+
+
 /* ---- Navigation ---- */
 
 .nav {
@@ -106,7 +160,7 @@ a {
 
 
 /* ============================================
-   1. HERO
+   1. HERO — Multi-layered depth
    ============================================ */
 
 .hero {
@@ -119,28 +173,108 @@ a {
   overflow: hidden;
 }
 
-.hero__bg {
+/* Shared base for all hero depth layers */
+.hero__layer {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 120% 80% at 50% 30%, rgba(22, 46, 40, 0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 60% at 20% 70%, rgba(13, 31, 26, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(22, 46, 40, 0.08) 0%, transparent 50%);
-  /* Replace with: background-image: url('hero.jpg'); background-size: cover; background-position: center; */
+  will-change: transform;
 }
 
+/* Far layer: distant environment — dark teal glow, like a forest canopy seen from below */
+.hero__layer--far {
+  background:
+    radial-gradient(ellipse 140% 90% at 50% 25%, rgba(13, 31, 26, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 15% 60%, rgba(22, 46, 40, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 70% at 85% 45%, rgba(13, 31, 26, 0.1) 0%, transparent 55%);
+}
+
+/* Mid layer: structures / ambient columns of light filtering through */
+.hero__layer--mid {
+  background:
+    radial-gradient(ellipse 30% 100% at 25% 50%, rgba(22, 46, 40, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 25% 100% at 75% 40%, rgba(22, 46, 40, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 15% 80% at 50% 35%, rgba(38, 51, 48, 0.05) 0%, transparent 60%),
+    linear-gradient(180deg, transparent 0%, rgba(10, 14, 12, 0.08) 100%);
+}
+
+/* Near layer: foreground haze, atmospheric veil */
+.hero__layer--near {
+  background:
+    linear-gradient(180deg,
+      rgba(10, 14, 12, 0.0) 0%,
+      rgba(10, 14, 12, 0.0) 50%,
+      rgba(10, 14, 12, 0.15) 75%,
+      rgba(10, 14, 12, 0.4) 100%
+    ),
+    radial-gradient(ellipse 100% 40% at 50% 90%, rgba(13, 31, 26, 0.12) 0%, transparent 70%);
+}
+
+/* Water-like reflection at the very bottom */
+.hero__reflection {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25vh;
+  background:
+    linear-gradient(to top,
+      rgba(10, 14, 12, 0.95) 0%,
+      rgba(10, 14, 12, 0.7) 30%,
+      transparent 100%
+    );
+  z-index: 1;
+}
+
+.hero__reflection::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 8%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(22, 46, 40, 0.15) 20%,
+    rgba(22, 46, 40, 0.25) 50%,
+    rgba(22, 46, 40, 0.15) 80%,
+    transparent 100%
+  );
+}
+
+.hero__reflection::after {
+  content: '';
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 14%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(22, 46, 40, 0.08) 30%,
+    rgba(22, 46, 40, 0.12) 50%,
+    rgba(22, 46, 40, 0.08) 70%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* Vignette overlay — darkened edges for focus */
 .hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
-    linear-gradient(to bottom, rgba(10, 14, 12, 0.4) 0%, rgba(10, 14, 12, 0.15) 40%, rgba(10, 14, 12, 0.6) 85%, var(--color-bg) 100%),
-    linear-gradient(to right, rgba(10, 14, 12, 0.3) 0%, transparent 30%, transparent 70%, rgba(10, 14, 12, 0.3) 100%);
+    radial-gradient(ellipse 70% 65% at 50% 42%, transparent 0%, rgba(10, 14, 12, 0.5) 100%);
 }
 
+/* Hero content — suspended in space */
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 0 var(--space-md);
+  will-change: transform;
 }
 
 .hero__title {
@@ -149,7 +283,11 @@ a {
   letter-spacing: 0.35em;
   color: var(--color-text-bright);
   line-height: 1;
-  margin-right: -0.35em; /* compensate tracking */
+  margin-right: -0.35em;
+  text-shadow:
+    0 0 120px rgba(22, 46, 40, 0.3),
+    0 0 60px rgba(10, 14, 12, 0.5),
+    0 2px 40px rgba(10, 14, 12, 0.4);
 }
 
 .hero__rule {
@@ -158,6 +296,7 @@ a {
   background: var(--color-accent-dim);
   margin: var(--space-lg) auto;
   opacity: 0.6;
+  box-shadow: 0 0 20px rgba(110, 96, 72, 0.15);
 }
 
 .hero__subtitle {
@@ -169,6 +308,7 @@ a {
   line-height: 1.8;
   max-width: 44ch;
   margin: 0 auto;
+  text-shadow: 0 2px 20px rgba(10, 14, 12, 0.6);
 }
 
 .hero__scroll-cue {
@@ -180,7 +320,9 @@ a {
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
-  z-index: 2;
+  z-index: 3;
+  opacity: 0.6;
+  animation: scrollPulse 3s ease-in-out infinite;
 }
 
 .hero__scroll-text {
@@ -195,6 +337,149 @@ a {
   width: 1px;
   height: 40px;
   background: linear-gradient(to bottom, var(--color-text-muted), transparent);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.3; transform: translateX(-50%) translateY(6px); }
+}
+
+
+/* ============================================
+   THRESHOLDS — Transitions between sections
+   ============================================ */
+
+.threshold {
+  position: relative;
+  height: 12vh;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.threshold--descent {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg-deep) 100%
+  );
+}
+
+.threshold--descent::before {
+  content: '';
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border),
+    transparent
+  );
+  opacity: 0.4;
+}
+
+.threshold--chamber {
+  height: 16vh;
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(13, 31, 26, 0.08) 0%, transparent 70%),
+    linear-gradient(to bottom, var(--color-bg-deep) 0%, var(--color-bg) 100%);
+}
+
+.threshold--chamber::before {
+  content: '';
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(38, 51, 48, 0.25),
+    transparent
+  );
+}
+
+.threshold--archive {
+  height: 14vh;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg-deep) 50%,
+    var(--color-bg) 100%
+  );
+}
+
+.threshold--archive::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(22, 46, 40, 0.04) 0%, transparent 70%);
+}
+
+.threshold--final {
+  height: 10vh;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-bg-deep) 100%
+  );
+}
+
+.threshold--final::before {
+  content: '';
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(38, 51, 48, 0.2),
+    transparent
+  );
+}
+
+
+/* ============================================
+   SECTION ATMOSPHERE — Ambient backgrounds
+   ============================================ */
+
+.section {
+  position: relative;
+  z-index: 2;
+}
+
+.section__atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section__atmosphere--manifesto {
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(13, 31, 26, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(22, 46, 40, 0.04) 0%, transparent 60%);
+}
+
+.section__atmosphere--works {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(13, 31, 26, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(22, 46, 40, 0.03) 0%, transparent 55%);
+}
+
+.section__atmosphere--closing {
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(22, 46, 40, 0.06) 0%, transparent 70%);
+}
+
+.section__inner {
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -234,7 +519,7 @@ a {
 
 
 /* ============================================
-   3. REALMS
+   3. REALMS — Sculptural panels
    ============================================ */
 
 .section--realms {
@@ -244,44 +529,94 @@ a {
 .section__wide {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 0;
 }
 
 .realm {
   position: relative;
-  min-height: 50vh;
+  min-height: 55vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  isolation: isolate;
 }
 
+/* Ambient texture layer */
 .realm__texture {
   position: absolute;
   inset: 0;
-  opacity: 0.12;
-  transition: opacity 0.8s ease;
+  opacity: 0.15;
+  transition: opacity 1.2s ease;
+  z-index: 0;
 }
 
 .realm__texture--1 {
   background:
     radial-gradient(ellipse 100% 80% at 30% 50%, rgba(22, 46, 40, 0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(13, 31, 26, 0.3) 0%, transparent 60%),
     linear-gradient(135deg, var(--color-teal-deep) 0%, var(--color-bg) 100%);
 }
 
 .realm__texture--2 {
   background:
     radial-gradient(ellipse 100% 80% at 70% 50%, rgba(22, 46, 40, 0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 90% 20%, rgba(13, 31, 26, 0.25) 0%, transparent 60%),
     linear-gradient(225deg, var(--color-stone) 0%, var(--color-bg) 100%);
 }
 
 .realm__texture--3 {
   background:
     radial-gradient(ellipse 100% 80% at 50% 60%, rgba(22, 46, 40, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 30%, rgba(13, 31, 26, 0.2) 0%, transparent 60%),
     linear-gradient(180deg, var(--color-teal-deep) 0%, var(--color-bg) 100%);
 }
 
 .realm:hover .realm__texture {
-  opacity: 0.2;
+  opacity: 0.25;
+}
+
+/* Sculptural edge — vertical accent suggesting stone edge or portal frame */
+.realm__edge {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  z-index: 1;
+}
+
+.realm__edge--left {
+  left: 6%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(38, 51, 48, 0.2) 20%,
+    rgba(38, 51, 48, 0.35) 50%,
+    rgba(38, 51, 48, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+.realm__edge--right {
+  right: 6%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(38, 51, 48, 0.2) 20%,
+    rgba(38, 51, 48, 0.35) 50%,
+    rgba(38, 51, 48, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* Inset shadow — top/bottom occlusion for carved-in depth */
+.realm__shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  box-shadow:
+    inset 0 40px 60px -30px rgba(6, 10, 8, 0.5),
+    inset 0 -40px 60px -30px rgba(6, 10, 8, 0.5);
 }
 
 .realm__content {
@@ -311,6 +646,7 @@ a {
   letter-spacing: 0.06em;
   line-height: 1.3;
   margin-bottom: var(--space-md);
+  text-shadow: 0 2px 30px rgba(10, 14, 12, 0.5);
 }
 
 .realm__desc {
@@ -327,17 +663,18 @@ a {
 
 
 /* ============================================
-   4. FEATURED WORKS
+   4. FEATURED WORKS — Depth & tactility
    ============================================ */
 
 .section--works {
   padding: var(--space-2xl) var(--space-lg);
-  border-top: 1px solid var(--color-border);
 }
 
 .section__inner--wide {
   max-width: 960px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .section__heading {
@@ -357,26 +694,65 @@ a {
 }
 
 .work {
+  position: relative;
   padding: var(--space-lg);
   background: var(--color-bg);
-  transition: background 0.6s ease;
+  transition:
+    background 0.8s ease,
+    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.8s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Inner atmospheric glow — reveals on hover */
+.work__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    rgba(22, 46, 40, 0.08) 0%,
+    transparent 70%
+  );
+  transition: opacity 1s ease;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .work:hover {
   background: var(--color-surface);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 40px rgba(6, 10, 8, 0.4),
+    0 2px 12px rgba(6, 10, 8, 0.3);
+  z-index: 1;
+}
+
+.work:hover .work__glow {
+  opacity: 1;
 }
 
 .work__format {
   display: block;
+  position: relative;
+  z-index: 1;
   font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-accent-dim);
   margin-bottom: var(--space-sm);
+  transition: color 0.8s ease;
+}
+
+.work:hover .work__format {
+  color: var(--color-accent);
 }
 
 .work__title {
+  position: relative;
+  z-index: 1;
   font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   font-weight: 400;
   color: var(--color-text-bright);
@@ -385,6 +761,8 @@ a {
 }
 
 .work__desc {
+  position: relative;
+  z-index: 1;
   font-size: 0.95rem;
   font-weight: 300;
   color: var(--color-text-dim);
@@ -399,7 +777,6 @@ a {
 
 .section--forms {
   padding: var(--space-2xl) var(--space-lg);
-  border-top: 1px solid var(--color-border);
 }
 
 .section--forms .section__heading {
@@ -446,13 +823,14 @@ a {
 
 .section--closing {
   padding: var(--space-2xl) var(--space-lg);
-  border-top: 1px solid var(--color-border);
 }
 
 .closing {
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .closing__symbol {
@@ -559,6 +937,8 @@ a {
     margin-right: 0;
   }
 
+  .realm__edge { display: none; }
+
   .works-grid {
     grid-template-columns: 1fr;
   }
@@ -580,6 +960,10 @@ a {
   .form-separator {
     display: none;
   }
+
+  .threshold {
+    height: 8vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -595,16 +979,45 @@ a {
 
 
 /* ============================================
-   SCROLL REVEAL (minimal)
+   SCROLL REVEAL
    ============================================ */
 
 .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transition: opacity 1.1s ease, transform 1.1s ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Staggered children for groups */
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.24s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.36s; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.48s; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.60s; }
+
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+
+  .hero__scroll-cue {
+    animation: none;
+  }
+
+  .hero__layer,
+  .hero__content {
+    will-change: auto;
+  }
 }

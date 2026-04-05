@@ -11,6 +11,13 @@
 </head>
 <body>
 
+  <!-- Global atmosphere — fixed mist layers -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="atmosphere__mist atmosphere__mist--top"></div>
+    <div class="atmosphere__mist atmosphere__mist--bottom"></div>
+    <div class="atmosphere__grain"></div>
+  </div>
+
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav__wordmark">MYTHERA</div>
@@ -24,9 +31,18 @@
 
   <!-- 1. HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <!-- Depth layer: distant environment -->
+    <div class="hero__layer hero__layer--far" data-parallax="0.03"></div>
+    <!-- Depth layer: mid structures / ambient light -->
+    <div class="hero__layer hero__layer--mid" data-parallax="0.06"></div>
+    <!-- Depth layer: near haze / foreground -->
+    <div class="hero__layer hero__layer--near" data-parallax="0.1"></div>
+    <!-- Water-like reflection at bottom -->
+    <div class="hero__reflection"></div>
+    <!-- Vignette overlay -->
     <div class="hero__overlay"></div>
-    <div class="hero__content">
+
+    <div class="hero__content" data-parallax="0.04">
       <h1 class="hero__title">MYTHERA</h1>
       <div class="hero__rule"></div>
       <p class="hero__subtitle">Interpretive worlds for memory, meaning, selfhood,<br>and the hidden structures that shape them.</p>
@@ -37,8 +53,12 @@
     </div>
   </section>
 
+  <!-- Threshold: hero → manifesto -->
+  <div class="threshold threshold--descent" aria-hidden="true"></div>
+
   <!-- 2. WHAT IS MYTHERA -->
   <section class="section section--manifesto" id="manifesto">
+    <div class="section__atmosphere section__atmosphere--manifesto" aria-hidden="true"></div>
     <div class="section__inner">
       <p class="manifesto__lead">Mythera is not a portfolio.</p>
       <p class="manifesto__body">
@@ -56,12 +76,17 @@
     </div>
   </section>
 
+  <!-- Threshold: manifesto → realms -->
+  <div class="threshold threshold--chamber" aria-hidden="true"></div>
+
   <!-- 3. THREE REALMS -->
   <section class="section section--realms" id="realms">
     <div class="section__wide">
 
       <article class="realm">
         <div class="realm__texture realm__texture--1"></div>
+        <div class="realm__edge realm__edge--left" aria-hidden="true"></div>
+        <div class="realm__shadow" aria-hidden="true"></div>
         <div class="realm__content">
           <span class="realm__index">I</span>
           <h2 class="realm__title">Self, Systems &amp; Subject Formation</h2>
@@ -74,6 +99,8 @@
 
       <article class="realm">
         <div class="realm__texture realm__texture--2"></div>
+        <div class="realm__edge realm__edge--right" aria-hidden="true"></div>
+        <div class="realm__shadow" aria-hidden="true"></div>
         <div class="realm__content">
           <span class="realm__index">II</span>
           <h2 class="realm__title">Literature, Self &amp; Performance</h2>
@@ -86,6 +113,8 @@
 
       <article class="realm">
         <div class="realm__texture realm__texture--3"></div>
+        <div class="realm__edge realm__edge--left" aria-hidden="true"></div>
+        <div class="realm__shadow" aria-hidden="true"></div>
         <div class="realm__content">
           <span class="realm__index">III</span>
           <h2 class="realm__title">Cultural Interpretation &amp; Aesthetic Legibility</h2>
@@ -99,44 +128,54 @@
     </div>
   </section>
 
+  <!-- Threshold: realms → works -->
+  <div class="threshold threshold--archive" aria-hidden="true"></div>
+
   <!-- 4. FEATURED WORKS -->
   <section class="section section--works" id="works">
+    <div class="section__atmosphere section__atmosphere--works" aria-hidden="true"></div>
     <div class="section__inner section__inner--wide">
       <h2 class="section__heading">Works</h2>
 
       <div class="works-grid">
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Philosophy / Strategy Game</span>
           <h3 class="work__title">Second Self</h3>
           <p class="work__desc">A philosophy strategy game about AI, memory, governance, and the kinds of subjects institutions produce.</p>
         </article>
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Interactive Simulation</span>
           <h3 class="work__title">Narrative Drift</h3>
           <p class="work__desc">A simulation of how ordinary algorithmic choices gradually reshape the self.</p>
         </article>
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Literary-Philosophical Atlas</span>
           <h3 class="work__title">Mishima Atlas</h3>
           <p class="work__desc">An interactive literary-philosophical atlas mapping Mishima's world across aesthetics, death, performance, politics, and remainder.</p>
         </article>
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Literary Interface</span>
           <h3 class="work__title">LitPulse</h3>
           <p class="work__desc">An interface for making the emotional and formal movement of literature visible.</p>
         </article>
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Music Interface</span>
           <h3 class="work__title">Scoreless</h3>
           <p class="work__desc">A music interface for experiencing structure, tension, and movement without reading a score.</p>
         </article>
 
         <article class="work">
+          <div class="work__glow" aria-hidden="true"></div>
           <span class="work__format">Philosophical Simulation</span>
           <h3 class="work__title">Existential Wager</h3>
           <p class="work__desc">A philosophical simulation where commitment to ideals gradually exposes contradiction, theatre, and self-mythologization.</p>
@@ -168,8 +207,12 @@
     </div>
   </section>
 
+  <!-- Threshold: forms → closing -->
+  <div class="threshold threshold--final" aria-hidden="true"></div>
+
   <!-- 6. CLOSING -->
   <section class="section section--closing" id="closing">
+    <div class="section__atmosphere section__atmosphere--closing" aria-hidden="true"></div>
     <div class="section__inner closing">
       <div class="closing__symbol">&#9670;</div>
       <p class="closing__statement">Mythera makes hidden structures newly legible.</p>
