@@ -278,11 +278,63 @@ body.in-depth .depth__realms-nav {
 .threshold__panel { padding: 6rem 4rem 6rem 3.5rem; background: var(--color-bg); border-left: 1px solid var(--color-border); position: relative; }
 .threshold__panel::before { content: ''; position: absolute; top: 0; left: -80px; bottom: 0; width: 80px; background: linear-gradient(to left, var(--color-bg), transparent); pointer-events: none; }
 .threshold__label { display: block; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 2.5rem; }
-.threshold__text { font-size: clamp(0.95rem, 1.3vw, 1.06rem); font-weight: 300; color: var(--color-text-body); line-height: 2; margin-bottom: 1.6rem; max-width: 48ch; }
-.threshold__text--lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 300; color: var(--color-text-bright); line-height: 1.6; margin-bottom: 2.2rem; max-width: 36ch; }
-.threshold__warning { margin-top: 3rem; padding: 1.8rem 2rem; border: 1px solid rgba(196,169,110,0.12); background: rgba(196,169,110,0.03); }
-.threshold__warning-label { display: block; font-size: 0.58rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.8rem; }
-.threshold__warning-text { font-size: clamp(0.92rem, 1.4vw, 1.05rem); font-weight: 300; font-style: italic; color: var(--color-text); line-height: 1.8; }
+.threshold__text { font-size: clamp(0.85rem, 1.1vw, 0.95rem); font-weight: 300; color: var(--color-text-body); line-height: 1.9; margin-bottom: 1.4rem; max-width: 48ch; }
+.threshold__text--lead { font-size: clamp(1rem, 1.6vw, 1.25rem); font-weight: 300; color: var(--color-text-bright); line-height: 1.6; margin-bottom: 2rem; max-width: 36ch; }
+
+
+/* ============================================
+   CONDITION — Entry warning with monolith
+   ============================================ */
+.condition {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  overflow: hidden;
+}
+
+.condition__image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.condition__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.3;
+  filter: brightness(0.6) saturate(0.5);
+}
+
+.condition__content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 520px;
+  padding: 4rem 2rem;
+}
+
+.condition__label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.condition__text {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.9;
+  text-shadow: 0 2px 20px rgba(8,12,10,0.9);
+}
 
 
 /* ============================================
