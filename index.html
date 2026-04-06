@@ -32,11 +32,10 @@
 </head>
 <body>
 
-  <!-- Global atmosphere — fixed mist layers -->
+  <!-- Global atmosphere -->
   <div class="atmosphere" aria-hidden="true">
     <div class="atmosphere__mist atmosphere__mist--top"></div>
     <div class="atmosphere__mist atmosphere__mist--bottom"></div>
-    <div class="atmosphere__grain"></div>
   </div>
 
   <!-- Navigation -->
@@ -54,20 +53,26 @@
     </div>
   </nav>
 
-  <!-- 1. HERO -->
-  <section class="hero">
-    <!-- Background image layer -->
-    <div class="hero__image" data-parallax="0.03"></div>
-    <!-- Depth overlay: mid atmosphere -->
-    <div class="hero__layer hero__layer--mid" data-parallax="0.06"></div>
-    <!-- Depth overlay: near haze -->
-    <div class="hero__layer hero__layer--near" data-parallax="0.1"></div>
-    <!-- Water-like reflection at bottom -->
-    <div class="hero__reflection"></div>
-    <!-- Vignette overlay -->
+  <!-- ========== 1. HERO ========== -->
+  <section class="hero" data-scene>
+    <div class="hero__image" data-parallax="0.04"></div>
+    <div class="hero__depth" aria-hidden="true">
+      <!-- Portal frame structure -->
+      <div class="hero__portal" data-drift="0.012">
+        <div class="hero__portal-ring hero__portal-ring--outer"></div>
+        <div class="hero__portal-ring hero__portal-ring--inner"></div>
+      </div>
+      <!-- Floating shards -->
+      <div class="hero__shard hero__shard--1" data-drift="0.02"></div>
+      <div class="hero__shard hero__shard--2" data-drift="0.03"></div>
+      <div class="hero__shard hero__shard--3" data-drift="0.015"></div>
+      <!-- Volumetric light beam -->
+      <div class="hero__beam"></div>
+    </div>
     <div class="hero__overlay"></div>
+    <div class="hero__reflection"></div>
 
-    <div class="hero__content" data-parallax="0.04">
+    <div class="hero__content" data-parallax="0.05">
       <h1 class="hero__title">
         <img src="public/images/wordmark.png" alt="MYTHERA" class="hero__wordmark-img">
       </h1>
@@ -80,12 +85,16 @@
     </div>
   </section>
 
-  <!-- Threshold: hero → manifesto -->
-  <div class="threshold threshold--descent" aria-hidden="true"></div>
+  <!-- Threshold -->
+  <div class="threshold threshold--descent" aria-hidden="true">
+    <div class="threshold__beam"></div>
+  </div>
 
-  <!-- 2. WHAT IS MYTHERA -->
+  <!-- ========== 2. MANIFESTO ========== -->
   <section class="section section--manifesto" id="manifesto">
     <div class="section__atmosphere section__atmosphere--manifesto" aria-hidden="true"></div>
+    <!-- Floating artifact -->
+    <div class="manifesto__artifact" data-drift="0.008" aria-hidden="true"></div>
     <div class="section__inner">
       <p class="manifesto__lead">Mythera is a studio for making hidden structures of meaning explorable.</p>
       <p class="manifesto__body">
@@ -100,54 +109,56 @@
     </div>
   </section>
 
-  <!-- Threshold: manifesto → realms -->
-  <div class="threshold threshold--chamber" aria-hidden="true"></div>
+  <!-- Threshold -->
+  <div class="threshold threshold--chamber" aria-hidden="true">
+    <div class="threshold__ring" data-drift="0.01"></div>
+  </div>
 
-  <!-- 3. THREE REALMS -->
+  <!-- ========== 3. THREE REALMS ========== -->
   <section class="section section--realms" id="realms">
     <div class="section__wide">
 
-      <article class="realm">
-        <div class="realm__texture realm__texture--1"></div>
-        <div class="realm__edge realm__edge--left" aria-hidden="true"></div>
-        <div class="realm__shadow" aria-hidden="true"></div>
+      <article class="realm" data-scene>
+        <div class="realm__image realm__image--1"></div>
+        <div class="realm__fog" aria-hidden="true"></div>
+        <div class="realm__frame" aria-hidden="true">
+          <div class="realm__frame-line realm__frame-line--v"></div>
+          <div class="realm__frame-line realm__frame-line--h"></div>
+        </div>
         <div class="realm__content">
           <span class="realm__index">I</span>
           <h2 class="realm__title">Self, Systems &amp; Subject Formation</h2>
-          <p class="realm__desc">
-            Projects about AI, memory, institutions, mediation, governance,
-            and the kinds of subjects systems produce.
-          </p>
+          <p class="realm__desc">Projects about AI, memory, institutions, mediation, governance, and the kinds of subjects systems produce.</p>
           <div class="realm__works">Second Self &middot; Narrative Drift &middot; Existential Wager</div>
         </div>
       </article>
 
-      <article class="realm">
-        <div class="realm__texture realm__texture--2"></div>
-        <div class="realm__edge realm__edge--right" aria-hidden="true"></div>
-        <div class="realm__shadow" aria-hidden="true"></div>
+      <article class="realm" data-scene>
+        <div class="realm__image realm__image--2"></div>
+        <div class="realm__fog" aria-hidden="true"></div>
+        <div class="realm__frame" aria-hidden="true">
+          <div class="realm__frame-line realm__frame-line--v"></div>
+          <div class="realm__frame-line realm__frame-line--h"></div>
+        </div>
         <div class="realm__content">
           <span class="realm__index">II</span>
           <h2 class="realm__title">Literature, Self &amp; Performance</h2>
-          <p class="realm__desc">
-            Projects about authenticity, masks, spectatorship, contradiction,
-            aesthetics, death, performance, and the unfinished self.
-          </p>
+          <p class="realm__desc">Projects about authenticity, masks, spectatorship, contradiction, aesthetics, death, performance, and the unfinished self.</p>
           <div class="realm__works">Mishima Atlas &middot; Existential Wager</div>
         </div>
       </article>
 
-      <article class="realm">
-        <div class="realm__texture realm__texture--3"></div>
-        <div class="realm__edge realm__edge--left" aria-hidden="true"></div>
-        <div class="realm__shadow" aria-hidden="true"></div>
+      <article class="realm" data-scene>
+        <div class="realm__image realm__image--3"></div>
+        <div class="realm__fog" aria-hidden="true"></div>
+        <div class="realm__frame" aria-hidden="true">
+          <div class="realm__frame-line realm__frame-line--v"></div>
+          <div class="realm__frame-line realm__frame-line--h"></div>
+        </div>
         <div class="realm__content">
           <span class="realm__index">III</span>
           <h2 class="realm__title">Cultural Interpretation &amp; Aesthetic Legibility</h2>
-          <p class="realm__desc">
-            Projects that make the structures of literature, music, and cultural form
-            perceptible without requiring specialist expertise.
-          </p>
+          <p class="realm__desc">Projects that make the structures of literature, music, and cultural form perceptible without requiring specialist expertise.</p>
           <div class="realm__works">LitPulse &middot; Scoreless</div>
         </div>
       </article>
@@ -155,82 +166,76 @@
     </div>
   </section>
 
-  <!-- Threshold: realms → works -->
+  <!-- Threshold -->
   <div class="threshold threshold--archive" aria-hidden="true"></div>
 
-  <!-- 4. FEATURED WORKS -->
+  <!-- ========== 4. FEATURED WORKS ========== -->
   <section class="section section--works" id="works">
     <div class="section__atmosphere section__atmosphere--works" aria-hidden="true"></div>
     <div class="section__inner section__inner--wide">
       <h2 class="section__heading">Works</h2>
 
-      <div class="works-list">
+      <div class="works-grid">
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Strategy Game</span>
-            <span class="work__realm">Realm I</span>
-          </div>
-          <h3 class="work__title">Second Self</h3>
-          <p class="work__desc">A philosophy strategy game about AI, memory, governance, and the kinds of subjects institutions produce. Players navigate institutional systems that shape identity — and discover how little of the self remains untouched.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Strategy Game</span>
+          <span class="work-panel__realm">Realm I</span>
+          <h3 class="work-panel__title">Second Self</h3>
+          <p class="work-panel__desc">A philosophy strategy game about AI, memory, governance, and the kinds of subjects institutions produce.</p>
         </article>
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Interactive Simulation</span>
-            <span class="work__realm">Realm I</span>
-          </div>
-          <h3 class="work__title">Narrative Drift</h3>
-          <p class="work__desc">A simulation of how ordinary algorithmic choices gradually reshape the self. Small decisions accumulate until the person you were becomes unrecognizable — not through crisis, but through drift.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Interactive Simulation</span>
+          <span class="work-panel__realm">Realm I</span>
+          <h3 class="work-panel__title">Narrative Drift</h3>
+          <p class="work-panel__desc">A simulation of how ordinary algorithmic choices gradually reshape the self.</p>
         </article>
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Atlas / Interpretation Interface</span>
-            <span class="work__realm">Realm II</span>
-          </div>
-          <h3 class="work__title">Mishima Atlas</h3>
-          <p class="work__desc">An interactive literary-philosophical atlas mapping Mishima's world across aesthetics, death, performance, politics, and remainder. A navigable architecture of a life that refused to separate art from action.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Atlas / Interpretation Interface</span>
+          <span class="work-panel__realm">Realm II</span>
+          <h3 class="work-panel__title">Mishima Atlas</h3>
+          <p class="work-panel__desc">An interactive literary-philosophical atlas mapping Mishima's world across aesthetics, death, performance, and remainder.</p>
         </article>
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Literary Interface</span>
-            <span class="work__realm">Realm III</span>
-          </div>
-          <h3 class="work__title">LitPulse</h3>
-          <p class="work__desc">An interface for making the emotional and formal movement of literature visible. Rhythm, tension, pacing, and tone rendered as navigable structure — legible without specialist training.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Literary Interface</span>
+          <span class="work-panel__realm">Realm III</span>
+          <h3 class="work-panel__title">LitPulse</h3>
+          <p class="work-panel__desc">An interface for making the emotional and formal movement of literature visible.</p>
         </article>
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Music Interface</span>
-            <span class="work__realm">Realm III</span>
-          </div>
-          <h3 class="work__title">Scoreless</h3>
-          <p class="work__desc">A music interface for experiencing structure, tension, and movement without reading a score. The architecture of sound made spatial and intuitive.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Music Interface</span>
+          <span class="work-panel__realm">Realm III</span>
+          <h3 class="work-panel__title">Scoreless</h3>
+          <p class="work-panel__desc">A music interface for experiencing structure, tension, and movement without reading a score.</p>
         </article>
 
-        <article class="work">
-          <div class="work__glow" aria-hidden="true"></div>
-          <div class="work__meta">
-            <span class="work__format">Philosophical Simulation</span>
-            <span class="work__realm">Realm I &middot; II</span>
-          </div>
-          <h3 class="work__title">Existential Wager</h3>
-          <p class="work__desc">A philosophical simulation where commitment to ideals gradually exposes contradiction, theatre, and self-mythologization. The wager is whether sincerity survives its own performance.</p>
+        <article class="work-panel">
+          <div class="work-panel__glass" aria-hidden="true"></div>
+          <div class="work-panel__edge" aria-hidden="true"></div>
+          <span class="work-panel__format">Philosophical Simulation</span>
+          <span class="work-panel__realm">Realm I &middot; II</span>
+          <h3 class="work-panel__title">Existential Wager</h3>
+          <p class="work-panel__desc">Where commitment to ideals gradually exposes contradiction, theatre, and self-mythologization.</p>
         </article>
 
       </div>
     </div>
   </section>
 
-  <!-- 5. THE WIDER WORLD -->
+  <!-- ========== 5. THE WIDER WORLD ========== -->
   <section class="section section--archive" id="archive">
     <div class="section__atmosphere section__atmosphere--archive" aria-hidden="true"></div>
     <div class="archive__accent" aria-hidden="true">
@@ -262,10 +267,7 @@
     </div>
   </section>
 
-  <!-- Threshold: archive → forms -->
-  <div class="threshold threshold--archive" aria-hidden="true"></div>
-
-  <!-- 6. OUTPUT FORMS / STUDIO LOGIC -->
+  <!-- ========== 6. STUDIO LOGIC ========== -->
   <section class="section section--forms" id="forms">
     <div class="section__inner section__inner--wide">
       <h2 class="section__heading">Studio Logic</h2>
@@ -288,10 +290,10 @@
     </div>
   </section>
 
-  <!-- Threshold: forms → closing -->
+  <!-- Threshold -->
   <div class="threshold threshold--final" aria-hidden="true"></div>
 
-  <!-- 7. CLOSING -->
+  <!-- ========== 7. CLOSING ========== -->
   <section class="section section--closing" id="closing">
     <div class="section__atmosphere section__atmosphere--closing" aria-hidden="true"></div>
     <div class="section__inner closing">

@@ -1,23 +1,27 @@
 /* =============================================
-   MYTHERA — Art-Directed Landing Page
+   MYTHERA — Immersive Art-Directed Landing
    ============================================= */
 
 :root {
-  --color-bg:          #0a0e0c;
-  --color-bg-deep:     #060a08;
-  --color-surface:     #0f1613;
+  --color-bg:          #080c0a;
+  --color-bg-deep:     #050807;
+  --color-surface:     #0c1210;
+  --color-glass:       rgba(12, 18, 16, 0.55);
+  --color-glass-edge:  rgba(60, 80, 72, 0.15);
   --color-stone:       #1a2320;
-  --color-stone-light: #263330;
   --color-teal:        #162e28;
   --color-teal-deep:   #0d1f1a;
-  --color-text:        #c8ccc9;
-  --color-text-dim:    #707a75;
-  --color-text-muted:  #4a5450;
-  --color-text-bright: #e4e8e5;
-  --color-silver:      #b8c0bb;
-  --color-accent:      #a08c6c;
-  --color-accent-dim:  #6e6048;
-  --color-border:      rgba(38, 51, 48, 0.35);
+
+  /* READABILITY: Brighter text colors */
+  --color-text:        #d2d7d4;
+  --color-text-dim:    #97a09b;
+  --color-text-muted:  #5e6b66;
+  --color-text-bright: #f0f2f0;
+  --color-silver:      #cdd4d0;
+  --color-accent:      #c4a96e;
+  --color-accent-dim:  #8a7650;
+  --color-gold-glow:   rgba(196, 169, 110, 0.08);
+  --color-border:      rgba(60, 80, 72, 0.25);
 
   --font-serif: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
 
@@ -29,20 +33,14 @@
   --space-2xl: 12rem;
 }
 
-
 /* ---- Reset ---- */
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -54,14 +52,11 @@ body {
 }
 
 ::selection {
-  background: rgba(22, 46, 40, 0.4);
+  background: rgba(196, 169, 110, 0.25);
   color: var(--color-text-bright);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; }
 
 
 /* ============================================
@@ -75,46 +70,18 @@ a {
   z-index: 50;
 }
 
-.atmosphere__mist {
-  position: absolute;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-}
-
 .atmosphere__mist--top {
-  top: 0;
-  height: 20vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 14, 12, 0.7) 0%,
-    rgba(10, 14, 12, 0.2) 50%,
-    transparent 100%
-  );
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 18vh;
+  background: linear-gradient(to bottom, rgba(8, 12, 10, 0.8) 0%, transparent 100%);
 }
 
 .atmosphere__mist--bottom {
-  bottom: 0;
-  height: 15vh;
-  background: linear-gradient(
-    to top,
-    rgba(10, 14, 12, 0.6) 0%,
-    transparent 100%
-  );
-}
-
-/* Film grain overlay — very faint texture */
-.atmosphere__grain {
   position: absolute;
-  inset: 0;
-  opacity: 0.025;
-  background-image:
-    repeating-conic-gradient(
-      rgba(200, 204, 201, 0.08) 0% 25%,
-      transparent 0% 50%
-    );
-  background-size: 4px 4px;
-  mix-blend-mode: overlay;
+  bottom: 0; left: 0; right: 0;
+  height: 12vh;
+  background: linear-gradient(to top, rgba(8, 12, 10, 0.7) 0%, transparent 100%);
 }
 
 
@@ -122,40 +89,29 @@ a {
 
 .nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem var(--space-lg);
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 14, 12, 0.92) 0%,
-    rgba(10, 14, 12, 0.6) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom, rgba(8, 12, 10, 0.95) 0%, rgba(8, 12, 10, 0.5) 70%, transparent 100%);
 }
 
 .nav__logo {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  text-decoration: none;
 }
 
 .nav__logo-img {
-  width: 22px;
-  height: 22px;
+  width: 22px; height: 22px;
   object-fit: contain;
-  opacity: 0.6;
-  transition: opacity 0.7s ease;
+  opacity: 0.5;
+  transition: opacity 0.7s;
 }
 
-.nav__logo:hover .nav__logo-img {
-  opacity: 0.85;
-}
+.nav__logo:hover .nav__logo-img { opacity: 0.8; }
 
 .nav__wordmark {
   font-size: 0.78rem;
@@ -164,10 +120,7 @@ a {
   color: var(--color-silver);
 }
 
-.nav__links {
-  display: flex;
-  gap: var(--space-md);
-}
+.nav__links { display: flex; gap: var(--space-md); }
 
 .nav__link {
   font-size: 0.72rem;
@@ -175,16 +128,14 @@ a {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  transition: color 0.7s ease;
+  transition: color 0.7s;
 }
 
-.nav__link:hover {
-  color: var(--color-silver);
-}
+.nav__link:hover { color: var(--color-silver); }
 
 
 /* ============================================
-   1. HERO — Multi-layered depth
+   1. HERO — Layered portal entry
    ============================================ */
 
 .hero {
@@ -195,135 +146,150 @@ a {
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  perspective: 1000px;
 }
 
-/* Hero background image */
 .hero__image {
   position: absolute;
-  inset: -5% -2% -5% -2%;
-  background-image: url('public/images/mythera-5.png');
-  background-size: cover;
-  background-position: center 35%;
+  inset: -8% -4% -8% -4%;
+  background: url('public/images/mythera-5.png') center 35% / cover no-repeat;
   will-change: transform;
+  filter: brightness(0.85) saturate(0.9);
 }
 
-/* Shared base for atmospheric overlay layers */
-.hero__layer {
+/* Depth container for 3D objects */
+.hero__depth {
   position: absolute;
   inset: 0;
-  will-change: transform;
+  pointer-events: none;
+  z-index: 2;
+  perspective: 800px;
 }
 
-/* Mid layer: atmospheric haze over image */
-.hero__layer--mid {
+/* Portal ring structure — concentric arcs */
+.hero__portal {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 55vmin; height: 55vmin;
+  transform: translate(-50%, -50%);
+}
+
+.hero__portal-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 169, 110, 0.06);
+}
+
+.hero__portal-ring--outer {
+  animation: portalSpin 90s linear infinite;
+  box-shadow: 0 0 60px rgba(196, 169, 110, 0.03), inset 0 0 60px rgba(196, 169, 110, 0.02);
+}
+
+.hero__portal-ring--inner {
+  inset: 18%;
+  border-color: rgba(196, 169, 110, 0.08);
+  animation: portalSpin 60s linear infinite reverse;
+  box-shadow: 0 0 40px rgba(196, 169, 110, 0.04);
+}
+
+@keyframes portalSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Floating shards — obsidian fragments */
+.hero__shard {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(60, 80, 72, 0.12), rgba(196, 169, 110, 0.04));
+  border: 1px solid rgba(60, 80, 72, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.hero__shard--1 {
+  width: 3px; height: 120px;
+  top: 18%; left: 22%;
+  transform: rotate(12deg);
+  opacity: 0.4;
+}
+
+.hero__shard--2 {
+  width: 2px; height: 80px;
+  top: 25%; right: 18%;
+  transform: rotate(-8deg);
+  opacity: 0.3;
+}
+
+.hero__shard--3 {
+  width: 60px; height: 2px;
+  bottom: 30%; left: 15%;
+  opacity: 0.25;
+}
+
+/* Volumetric light beam */
+.hero__beam {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 2px; height: 45%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(196, 169, 110, 0.06), transparent);
+  filter: blur(6px);
+}
+
+/* Overlay — vignette + center clarity */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
   background:
-    radial-gradient(ellipse 80% 80% at 50% 40%, rgba(10, 14, 12, 0.2) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(10, 14, 12, 0.15) 0%, rgba(10, 14, 12, 0.05) 50%, rgba(10, 14, 12, 0.25) 100%);
+    radial-gradient(ellipse 55% 50% at 50% 45%, transparent 0%, rgba(8, 12, 10, 0.7) 100%),
+    linear-gradient(180deg, rgba(8, 12, 10, 0.2) 0%, rgba(8, 12, 10, 0.05) 40%, rgba(8, 12, 10, 0.6) 85%, rgba(8, 12, 10, 1) 100%);
 }
 
-/* Near layer: foreground haze for text legibility */
-.hero__layer--near {
-  background:
-    linear-gradient(180deg,
-      rgba(10, 14, 12, 0.3) 0%,
-      rgba(10, 14, 12, 0.1) 35%,
-      rgba(10, 14, 12, 0.15) 55%,
-      rgba(10, 14, 12, 0.5) 85%,
-      rgba(10, 14, 12, 0.85) 100%
-    ),
-    radial-gradient(ellipse 60% 50% at 50% 45%, rgba(10, 14, 12, 0.25) 0%, transparent 70%);
-}
-
-/* Water-like reflection at the very bottom */
+/* Reflection */
 .hero__reflection {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25vh;
-  background:
-    linear-gradient(to top,
-      rgba(10, 14, 12, 0.95) 0%,
-      rgba(10, 14, 12, 0.7) 30%,
-      transparent 100%
-    );
-  z-index: 1;
+  left: 0; right: 0; bottom: 0;
+  height: 20vh;
+  z-index: 4;
+  background: linear-gradient(to top, rgba(8, 12, 10, 0.98), transparent);
 }
 
 .hero__reflection::before {
   content: '';
   position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 8%;
+  left: 15%; right: 15%; bottom: 12%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(22, 46, 40, 0.15) 20%,
-    rgba(22, 46, 40, 0.25) 50%,
-    rgba(22, 46, 40, 0.15) 80%,
-    transparent 100%
-  );
+  background: linear-gradient(to right, transparent, rgba(196, 169, 110, 0.1), transparent);
 }
 
-.hero__reflection::after {
-  content: '';
-  position: absolute;
-  left: 20%;
-  right: 20%;
-  bottom: 14%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(22, 46, 40, 0.08) 30%,
-    rgba(22, 46, 40, 0.12) 50%,
-    rgba(22, 46, 40, 0.08) 70%,
-    transparent 100%
-  );
-  opacity: 0.6;
-}
-
-/* Vignette overlay — darkened edges for focus */
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    radial-gradient(ellipse 65% 55% at 50% 42%, transparent 0%, rgba(10, 14, 12, 0.6) 100%);
-}
-
-/* Hero content — suspended in space */
+/* Content */
 .hero__content {
   position: relative;
-  z-index: 3;
+  z-index: 5;
   padding: 0 var(--space-md);
   will-change: transform;
 }
 
-.hero__title {
-  line-height: 1;
-}
+.hero__title { line-height: 1; }
 
 .hero__wordmark-img {
   display: block;
-  width: clamp(260px, 42vw, 560px);
+  width: clamp(260px, 44vw, 580px);
   height: auto;
   margin: 0 auto;
-  filter: drop-shadow(0 0 80px rgba(10, 14, 12, 0.5)) drop-shadow(0 4px 40px rgba(10, 14, 12, 0.4));
+  filter: drop-shadow(0 0 100px rgba(196, 169, 110, 0.1)) drop-shadow(0 4px 40px rgba(8, 12, 10, 0.5));
 }
 
 .hero__rule {
-  width: 40px;
-  height: 1px;
+  width: 40px; height: 1px;
   background: linear-gradient(to right, transparent, var(--color-accent-dim), transparent);
-  margin: 3rem auto;
+  margin: 2.5rem auto;
   opacity: 0.5;
 }
 
 .hero__subtitle {
-  font-size: clamp(0.92rem, 1.6vw, 1.12rem);
+  font-size: clamp(0.95rem, 1.7vw, 1.15rem);
   font-weight: 300;
   font-style: italic;
   color: var(--color-text-dim);
@@ -331,8 +297,7 @@ a {
   line-height: 1.9;
   max-width: 42ch;
   margin: 0 auto;
-  text-shadow: 0 2px 30px rgba(10, 14, 12, 0.7);
-  opacity: 0.85;
+  text-shadow: 0 2px 20px rgba(8, 12, 10, 0.9);
 }
 
 .hero__scroll-cue {
@@ -340,136 +305,91 @@ a {
   bottom: var(--space-lg);
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   gap: var(--space-sm);
-  z-index: 3;
-  opacity: 0.5;
-  animation: scrollPulse 4.5s ease-in-out infinite;
+  z-index: 5;
+  opacity: 0.4;
+  animation: scrollPulse 5s ease-in-out infinite;
 }
 
 .hero__scroll-text {
   font-size: 0.55rem;
-  font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .hero__scroll-line {
-  width: 1px;
-  height: 40px;
+  width: 1px; height: 40px;
   background: linear-gradient(to bottom, var(--color-text-muted), transparent);
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 0.2; transform: translateX(-50%) translateY(5px); }
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.15; transform: translateX(-50%) translateY(6px); }
 }
 
 
 /* ============================================
-   THRESHOLDS — Transitions between sections
+   THRESHOLDS — Spatial transitions
    ============================================ */
 
 .threshold {
   position: relative;
-  height: 12vh;
+  height: 14vh;
   pointer-events: none;
   overflow: hidden;
 }
 
 .threshold--descent {
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 0%,
-    var(--color-bg-deep) 100%
-  );
+  height: 18vh;
+  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-deep) 100%);
 }
 
-.threshold--descent::before {
-  content: '';
+.threshold__beam {
   position: absolute;
-  left: 15%;
-  right: 15%;
-  top: 50%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--color-border),
-    transparent
-  );
-  opacity: 0.4;
+  left: 50%; top: 0;
+  width: 1px; height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(196, 169, 110, 0.06), transparent 70%);
+  filter: blur(3px);
 }
 
 .threshold--chamber {
-  height: 16vh;
-  background:
-    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(13, 31, 26, 0.08) 0%, transparent 70%),
-    linear-gradient(to bottom, var(--color-bg-deep) 0%, var(--color-bg) 100%);
+  height: 20vh;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(22, 46, 40, 0.04) 0%, transparent 70%),
+    linear-gradient(to bottom, var(--color-bg-deep), var(--color-bg));
 }
 
-.threshold--chamber::before {
-  content: '';
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  bottom: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(38, 51, 48, 0.25),
-    transparent
-  );
+.threshold__ring {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 169, 110, 0.06);
+  animation: portalSpin 30s linear infinite;
 }
 
 .threshold--archive {
   height: 14vh;
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 0%,
-    var(--color-bg-deep) 50%,
-    var(--color-bg) 100%
-  );
+  background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-bg-deep) 50%, var(--color-bg) 100%);
 }
 
 .threshold--archive::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(22, 46, 40, 0.04) 0%, transparent 70%);
+  left: 20%; right: 20%; top: 50%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+  opacity: 0.3;
 }
 
 .threshold--final {
-  height: 10vh;
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 0%,
-    var(--color-bg-deep) 100%
-  );
-}
-
-.threshold--final::before {
-  content: '';
-  position: absolute;
-  left: 30%;
-  right: 30%;
-  top: 50%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(38, 51, 48, 0.2),
-    transparent
-  );
+  height: 12vh;
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-deep));
 }
 
 
 /* ============================================
-   SECTION ATMOSPHERE — Ambient backgrounds
+   SECTIONS — Base
    ============================================ */
 
 .section {
@@ -485,26 +405,42 @@ a {
 }
 
 .section__atmosphere--manifesto {
-  background:
-    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(13, 31, 26, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(22, 46, 40, 0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 50% at 30% 40%, rgba(22, 46, 40, 0.06) 0%, transparent 70%);
 }
 
 .section__atmosphere--works {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(13, 31, 26, 0.06) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(22, 46, 40, 0.03) 0%, transparent 55%);
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(22, 46, 40, 0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 70%, rgba(196, 169, 110, 0.02) 0%, transparent 60%);
+}
+
+.section__atmosphere--archive {
+  background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(22, 46, 40, 0.05) 0%, transparent 65%);
 }
 
 .section__atmosphere--closing {
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(22, 46, 40, 0.08) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(13, 31, 26, 0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(196, 169, 110, 0.03) 0%, transparent 60%);
 }
 
 .section__inner {
   position: relative;
   z-index: 1;
+}
+
+.section__inner--wide {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section__heading {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--color-silver);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xl);
 }
 
 
@@ -514,6 +450,7 @@ a {
 
 .section--manifesto {
   padding: var(--space-2xl) var(--space-lg);
+  overflow: hidden;
 }
 
 .section--manifesto .section__inner {
@@ -521,30 +458,37 @@ a {
   margin: 0 auto;
 }
 
+/* Floating slab artifact */
+.manifesto__artifact {
+  position: absolute;
+  top: 15%; right: 8%;
+  width: 2px; height: 180px;
+  background: linear-gradient(to bottom, transparent, rgba(196, 169, 110, 0.06), transparent);
+  transform: rotate(8deg);
+}
+
 .manifesto__lead {
   font-size: clamp(1.5rem, 3.2vw, 2.2rem);
   font-weight: 300;
   color: var(--color-text-bright);
   letter-spacing: 0.03em;
-  line-height: 1.45;
+  line-height: 1.5;
   margin-bottom: 3rem;
 }
 
 .manifesto__body {
-  font-size: clamp(1rem, 1.5vw, 1.08rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   font-weight: 300;
   color: var(--color-text-dim);
-  line-height: 2.05;
+  line-height: 2.1;
   margin-bottom: 1.8rem;
 }
 
-.manifesto__body:last-child {
-  margin-bottom: 0;
-}
+.manifesto__body:last-child { margin-bottom: 0; }
 
 
 /* ============================================
-   3. REALMS — Sculptural panels
+   3. REALMS — Spatial chambers
    ============================================ */
 
 .section--realms {
@@ -554,98 +498,90 @@ a {
 .section__wide {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .realm {
   position: relative;
-  min-height: 55vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Ambient image layer */
-.realm__texture {
+.realm__image {
   position: absolute;
-  inset: -5%;
-  opacity: 0.18;
-  transition: opacity 1.2s ease;
+  inset: -8%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  filter: brightness(0.6) saturate(0.5);
+  transition: opacity 1.5s ease, filter 1.5s ease;
   z-index: 0;
+}
+
+.realm__image--1 { background-image: url('public/images/mythera-1.png'); }
+.realm__image--2 { background-image: url('public/images/mythera-2.png'); }
+.realm__image--3 { background-image: url('public/images/mythera-6.png'); }
+
+.realm:hover .realm__image {
+  opacity: 0.3;
   filter: brightness(0.7) saturate(0.6);
 }
 
-.realm__texture--1 {
-  background: url('public/images/mythera-1.png') center / cover no-repeat;
-}
-
-.realm__texture--2 {
-  background: url('public/images/mythera-2.png') center / cover no-repeat;
-}
-
-.realm__texture--3 {
-  background: url('public/images/mythera-6.png') center / cover no-repeat;
-}
-
-.realm:hover .realm__texture {
-  opacity: 0.22;
-}
-
-/* Sculptural edge — vertical accent suggesting stone edge or portal frame */
-.realm__edge {
-  position: absolute;
-  top: 10%;
-  bottom: 10%;
-  width: 1px;
-  z-index: 1;
-}
-
-.realm__edge--left {
-  left: 6%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(38, 51, 48, 0.2) 20%,
-    rgba(38, 51, 48, 0.35) 50%,
-    rgba(38, 51, 48, 0.2) 80%,
-    transparent 100%
-  );
-}
-
-.realm__edge--right {
-  right: 6%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(38, 51, 48, 0.2) 20%,
-    rgba(38, 51, 48, 0.35) 50%,
-    rgba(38, 51, 48, 0.2) 80%,
-    transparent 100%
-  );
-}
-
-/* Inset shadow — top/bottom occlusion for carved-in depth */
-.realm__shadow {
+/* Fog layer — depth occlusion */
+.realm__fog {
   position: absolute;
   inset: 0;
   z-index: 1;
-  pointer-events: none;
   box-shadow:
-    inset 0 40px 60px -30px rgba(6, 10, 8, 0.5),
-    inset 0 -40px 60px -30px rgba(6, 10, 8, 0.5);
+    inset 0 60px 80px -30px rgba(8, 12, 10, 0.6),
+    inset 0 -60px 80px -30px rgba(8, 12, 10, 0.6);
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, transparent, rgba(8, 12, 10, 0.4));
+}
+
+/* Architectural frame lines */
+.realm__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.realm__frame-line--v {
+  position: absolute;
+  width: 1px;
+  top: 8%; bottom: 8%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(60, 80, 72, 0.2) 30%, rgba(60, 80, 72, 0.2) 70%, transparent 100%);
+}
+
+.realm:nth-child(1) .realm__frame-line--v { left: 7%; }
+.realm:nth-child(2) .realm__frame-line--v { right: 7%; }
+.realm:nth-child(3) .realm__frame-line--v { left: 10%; }
+
+.realm__frame-line--h {
+  position: absolute;
+  height: 1px;
+  left: 5%; right: 60%;
+  top: 50%;
+  background: linear-gradient(to right, rgba(60, 80, 72, 0.15), transparent);
+}
+
+.realm:nth-child(2) .realm__frame-line--h {
+  left: 60%; right: 5%;
+  background: linear-gradient(to left, rgba(60, 80, 72, 0.15), transparent);
 }
 
 .realm__content {
   position: relative;
-  z-index: 2;
-  max-width: 580px;
+  z-index: 3;
+  max-width: 560px;
   padding: var(--space-xl) var(--space-lg);
 }
 
-.realm:nth-child(1) .realm__content { margin-left: 10%; }
-.realm:nth-child(2) .realm__content { margin-left: auto; margin-right: 10%; }
-.realm:nth-child(3) .realm__content { margin-left: 15%; }
+.realm:nth-child(1) .realm__content { margin-left: 12%; }
+.realm:nth-child(2) .realm__content { margin-left: auto; margin-right: 12%; }
+.realm:nth-child(3) .realm__content { margin-left: 16%; }
 
 .realm__index {
   display: block;
@@ -663,7 +599,7 @@ a {
   letter-spacing: 0.05em;
   line-height: 1.35;
   margin-bottom: 1.5rem;
-  text-shadow: 0 2px 30px rgba(10, 14, 12, 0.5);
+  text-shadow: 0 2px 30px rgba(8, 12, 10, 0.6);
 }
 
 .realm__desc {
@@ -671,7 +607,7 @@ a {
   font-weight: 300;
   color: var(--color-text-dim);
   line-height: 1.9;
-  max-width: 48ch;
+  max-width: 44ch;
 }
 
 .realm__works {
@@ -682,12 +618,10 @@ a {
   color: var(--color-text-muted);
   text-transform: uppercase;
   opacity: 0.7;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s;
 }
 
-.realm:hover .realm__works {
-  opacity: 1;
-}
+.realm:hover .realm__works { opacity: 1; }
 
 .realm + .realm {
   border-top: 1px solid var(--color-border);
@@ -695,126 +629,108 @@ a {
 
 
 /* ============================================
-   4. FEATURED WORKS — Depth & tactility
+   4. WORKS — Glass exhibition panels
    ============================================ */
 
 .section--works {
   padding: var(--space-2xl) var(--space-lg);
+  perspective: 1200px;
 }
 
-.section__inner--wide {
-  max-width: 960px;
-  margin: 0 auto;
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.work-panel {
   position: relative;
-  z-index: 1;
-}
-
-.section__heading {
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  color: var(--color-silver);
-  text-transform: uppercase;
-  margin-bottom: var(--space-xl);
-}
-
-.works-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.work {
-  position: relative;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--color-border);
-  transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  padding: 2.5rem;
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-edge);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.8s ease,
+    border-color 0.8s ease;
   overflow: hidden;
-  isolation: isolate;
+  transform-style: preserve-3d;
 }
 
-.work:last-child {
-  border-bottom: 1px solid var(--color-border);
-}
-
-/* Inner atmospheric glow — reveals on hover */
-.work__glow {
+/* Glass refraction highlight */
+.work-panel__glass {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  background: radial-gradient(
-    ellipse 100% 100% at 0% 50%,
-    rgba(22, 46, 40, 0.06) 0%,
-    transparent 60%
-  );
-  transition: opacity 1s ease;
-  z-index: 0;
+  background: linear-gradient(135deg, rgba(196, 169, 110, 0.02) 0%, transparent 40%, transparent 60%, rgba(60, 80, 72, 0.02) 100%);
   pointer-events: none;
+  transition: opacity 0.8s;
+  opacity: 0;
 }
 
-.work:hover {
-  transform: translateX(6px);
+/* Left-edge light catch */
+.work-panel__edge {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(196, 169, 110, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.8s;
 }
 
-.work:hover .work__glow {
-  opacity: 1;
+.work-panel:hover {
+  transform: translateY(-4px) rotateX(1deg);
+  border-color: rgba(60, 80, 72, 0.3);
+  box-shadow:
+    0 20px 60px rgba(5, 8, 7, 0.5),
+    0 4px 16px rgba(5, 8, 7, 0.3),
+    inset 0 1px 0 rgba(196, 169, 110, 0.04);
 }
 
-.work__meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-sm);
-  position: relative;
-  z-index: 1;
-}
+.work-panel:hover .work-panel__glass { opacity: 1; }
+.work-panel:hover .work-panel__edge { opacity: 1; }
 
-.work__format {
+.work-panel__format {
   display: block;
-  position: relative;
-  z-index: 1;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-accent-dim);
-  transition: color 1s ease;
+  margin-bottom: 0.4rem;
+  transition: color 0.8s;
 }
 
-.work__realm {
-  font-size: 0.6rem;
-  font-weight: 400;
+.work-panel:hover .work-panel__format { color: var(--color-accent); }
+
+.work-panel__realm {
+  display: block;
+  font-size: 0.55rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  margin-bottom: 1.2rem;
 }
 
-.work:hover .work__format {
-  color: var(--color-accent);
-}
-
-.work__title {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(1.4rem, 2.8vw, 2rem);
+.work-panel__title {
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
   font-weight: 400;
   color: var(--color-text-bright);
   letter-spacing: 0.03em;
   margin-bottom: 0.8rem;
 }
 
-.work__desc {
-  position: relative;
-  z-index: 1;
-  font-size: clamp(0.9rem, 1.4vw, 1rem);
+.work-panel__desc {
+  font-size: 0.92rem;
   font-weight: 300;
   color: var(--color-text-dim);
-  line-height: 1.9;
-  max-width: 56ch;
+  line-height: 1.85;
+  max-width: 38ch;
 }
 
 
 /* ============================================
-   5. THE WIDER WORLD / ARCHIVE
+   5. ARCHIVE
    ============================================ */
 
 .section--archive {
@@ -822,33 +738,23 @@ a {
   overflow: hidden;
 }
 
-/* Floating crystal monolith accent */
 .archive__accent {
   position: absolute;
-  top: -5%;
-  right: -4%;
-  width: 30%;
-  max-width: 280px;
+  top: -5%; right: -4%;
+  width: 30%; max-width: 280px;
   height: 100%;
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
   overflow: hidden;
 }
 
 .archive__accent-img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: contain;
   object-position: top right;
-  opacity: 0.06;
+  opacity: 0.07;
   filter: saturate(0) brightness(0.8);
   mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 80%);
   -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6) 0%, transparent 80%);
-}
-
-.section__atmosphere--archive {
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(13, 31, 26, 0.05) 0%, transparent 65%);
 }
 
 .archive__intro {
@@ -867,9 +773,7 @@ a {
   margin-bottom: var(--space-xl);
 }
 
-.archive__branch {
-  flex: 1;
-}
+.archive__branch { flex: 1; }
 
 .archive__branch-label {
   display: block;
@@ -896,13 +800,13 @@ a {
   color: var(--color-text-muted);
   letter-spacing: 0.03em;
   padding-left: var(--space-sm);
-  border-left: 1px solid rgba(38, 51, 48, 0.15);
-  transition: color 0.7s ease, border-color 0.7s ease;
+  border-left: 1px solid rgba(60, 80, 72, 0.15);
+  transition: color 0.7s, border-color 0.7s;
 }
 
 .archive__node:hover {
   color: var(--color-text-dim);
-  border-left-color: rgba(110, 96, 72, 0.4);
+  border-left-color: rgba(196, 169, 110, 0.3);
 }
 
 .archive__coda {
@@ -910,12 +814,11 @@ a {
   font-weight: 300;
   font-style: italic;
   color: var(--color-text-muted);
-  letter-spacing: 0.04em;
 }
 
 
 /* ============================================
-   6. OUTPUT FORMS / STUDIO LOGIC
+   6. STUDIO LOGIC
    ============================================ */
 
 .section--forms {
@@ -942,7 +845,6 @@ a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -955,12 +857,10 @@ a {
   color: var(--color-text-dim);
   letter-spacing: 0.05em;
   padding: var(--space-xs) 0;
-  transition: color 0.7s ease;
+  transition: color 0.7s;
 }
 
-.form-node:hover {
-  color: var(--color-silver);
-}
+.form-node:hover { color: var(--color-silver); }
 
 .form-separator {
   display: inline-block;
@@ -972,7 +872,7 @@ a {
 
 
 /* ============================================
-   7. CLOSING — Final threshold
+   7. CLOSING
    ============================================ */
 
 .section--closing {
@@ -983,23 +883,20 @@ a {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 
 .closing__mark {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 40px; height: 40px;
   margin: 0 auto 3rem;
   object-fit: contain;
-  opacity: 0.25;
-  filter: saturate(0) brightness(1.2);
+  opacity: 0.2;
+  filter: saturate(0) brightness(1.3);
 }
 
 .closing__rule {
-  width: 32px;
-  height: 1px;
+  width: 32px; height: 1px;
   background: linear-gradient(to right, transparent, var(--color-accent-dim), transparent);
   margin: 3rem auto 3.5rem;
   opacity: 0.4;
@@ -1025,7 +922,7 @@ a {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  transition: color 0.7s ease;
+  transition: color 0.7s;
   position: relative;
 }
 
@@ -1033,22 +930,16 @@ a {
   content: '';
   position: absolute;
   bottom: -6px;
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   height: 1px;
-  background: rgba(110, 96, 72, 0.35);
+  background: rgba(196, 169, 110, 0.3);
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.7s ease;
+  transition: transform 0.7s;
 }
 
-.closing__link:hover {
-  color: var(--color-silver);
-}
-
-.closing__link:hover::after {
-  transform: scaleX(1);
-}
+.closing__link:hover { color: var(--color-silver); }
+.closing__link:hover::after { transform: scaleX(1); }
 
 
 /* ---- Footer ---- */
@@ -1059,9 +950,8 @@ a {
 }
 
 .footer__rule {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, rgba(38, 51, 48, 0.25), transparent);
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(60, 80, 72, 0.2), transparent);
   margin: 0 auto 2rem;
 }
 
@@ -1088,17 +978,9 @@ a {
    ============================================ */
 
 @media (max-width: 768px) {
-  .nav {
-    padding: var(--space-sm) var(--space-md);
-  }
-
-  .nav__links {
-    gap: var(--space-sm);
-  }
-
-  .nav__link {
-    font-size: 0.65rem;
-  }
+  .nav { padding: var(--space-sm) var(--space-md); }
+  .nav__links { gap: var(--space-sm); }
+  .nav__link { font-size: 0.65rem; }
 
   .section--manifesto,
   .section--works,
@@ -1109,63 +991,32 @@ a {
     padding-right: var(--space-md);
   }
 
-  .archive__constellation {
-    flex-direction: column;
-    gap: var(--space-lg);
-  }
+  .works-grid { grid-template-columns: 1fr; }
+  .work-panel { padding: 2rem; }
 
-  .realm__content {
-    padding: var(--space-lg) var(--space-md);
-  }
+  .realm__content { padding: var(--space-lg) var(--space-md); }
 
   .realm:nth-child(1) .realm__content,
   .realm:nth-child(2) .realm__content,
   .realm:nth-child(3) .realm__content {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0; margin-right: 0;
   }
 
-  .realm__edge { display: none; }
-
-  .work {
-    padding: var(--space-md) 0;
-  }
-
-  .section--closing {
-    padding: 6rem var(--space-md) 5rem;
-  }
-
-  .closing__links {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .forms-field {
-    flex-direction: column;
-    gap: var(--space-xs);
-  }
-
-  .form-separator {
-    display: none;
-  }
-
-  .threshold {
-    height: 8vh;
-  }
+  .realm__frame { display: none; }
+  .archive__constellation { flex-direction: column; gap: var(--space-lg); }
+  .section--closing { padding: 6rem var(--space-md) 5rem; }
+  .closing__links { flex-direction: column; gap: 1.5rem; }
+  .forms-field { flex-direction: column; gap: var(--space-xs); }
+  .form-separator { display: none; }
+  .threshold { height: 8vh; }
+  .hero__shard, .hero__beam, .manifesto__artifact { display: none; }
 }
 
 @media (max-width: 480px) {
-  .hero__wordmark-img {
-    width: clamp(200px, 60vw, 280px);
-  }
-
-  .nav__links {
-    display: none;
-  }
-
-  .archive__accent {
-    display: none;
-  }
+  .hero__wordmark-img { width: clamp(200px, 60vw, 280px); }
+  .nav__links { display: none; }
+  .archive__accent { display: none; }
+  .hero__portal { width: 80vmin; height: 80vmin; }
 }
 
 
@@ -1175,8 +1026,8 @@ a {
 
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 1.3s ease, transform 1.3s ease;
+  transform: translateY(16px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
 }
 
 .reveal.is-visible {
@@ -1184,13 +1035,12 @@ a {
   transform: translateY(0);
 }
 
-/* Staggered children for groups */
 .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
-.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.12s; }
-.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.24s; }
-.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.36s; }
-.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.48s; }
-.reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.60s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.4s; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.5s; }
 
 
 /* ============================================
@@ -1198,17 +1048,11 @@ a {
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    transition: opacity 0.4s ease;
-    transform: none;
-  }
-
-  .hero__scroll-cue {
-    animation: none;
-  }
-
-  .hero__layer,
-  .hero__content {
-    will-change: auto;
-  }
+  .reveal { transition: opacity 0.4s ease; transform: none; }
+  .hero__scroll-cue { animation: none; }
+  .hero__portal-ring { animation: none; }
+  .threshold__ring { animation: none; }
+  .hero__image, .hero__content { will-change: auto; }
+  .work-panel { transition: box-shadow 0.4s ease; }
+  .work-panel:hover { transform: none; }
 }
