@@ -400,12 +400,22 @@ body.in-depth .depth__realms-nav {
    ORIGIN — Creator signature
    ============================================ */
 .origin {
-  padding: 5rem 3rem;
-  text-align: center;
+  padding: 5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.origin__left {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1.5rem;
+  text-align: center;
+  flex: 1;
 }
 
 .origin__profile {
@@ -415,6 +425,7 @@ body.in-depth .depth__realms-nav {
   overflow: hidden;
   border: 1px solid var(--color-border);
   box-shadow: 0 6px 32px rgba(5,8,7,0.5);
+  flex-shrink: 0;
 }
 
 .origin__profile-img {
@@ -431,13 +442,13 @@ body.in-depth .depth__realms-nav {
 }
 
 .origin__text {
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
   font-weight: 300;
   font-style: italic;
   color: var(--color-text-dim);
-  line-height: 2;
+  line-height: 1.9;
   letter-spacing: 0.02em;
-  max-width: 46ch;
+  max-width: 40ch;
 }
 
 .origin__card {
@@ -449,7 +460,8 @@ body.in-depth .depth__realms-nav {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 8px;
-  max-width: 400px;
+  width: 300px;
+  flex-shrink: 0;
   text-decoration: none;
   transition: border-color 0.6s, box-shadow 0.6s, transform 0.6s;
 }
@@ -913,6 +925,8 @@ body.in-depth .depth__realms-nav {
   .threshold__panel { padding: 3rem 2rem; border-left: none; border-top: 1px solid var(--color-border); }
   .threshold__panel::before { display: none; }
   .condition { flex-direction: column; gap: 2rem; padding: 4rem 2rem; }
+  .origin { flex-direction: column; padding: 4rem 2rem; }
+  .origin__card { width: 100%; max-width: 320px; }
   .condition__visual { width: clamp(180px, 50vw, 260px); }
   .condition__content { text-align: center; }
   .gateway__portals { grid-template-columns: 1fr; max-width: 400px; }
