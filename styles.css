@@ -107,6 +107,33 @@ body.in-depth .depth__back {
 .depth__back-arrow { font-size: 1.1rem; }
 .depth__back-text { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
 
+/* Realm nav within depth */
+.depth__realms-nav {
+  position: fixed;
+  top: 1.6rem; right: 3rem;
+  z-index: 110;
+  display: flex; gap: 1.2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.6s 0.3s;
+}
+
+body.in-depth .depth__realms-nav {
+  opacity: 1; pointer-events: auto;
+}
+
+.depth__realm-link {
+  font-size: 0.65rem; font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--color-text-muted);
+  transition: color 0.5s;
+  padding: 0.3rem 0;
+}
+
+.depth__realm-link:hover,
+.depth__realm-link.is-active {
+  color: var(--color-accent);
+}
+
 
 /* ============================================
    HERO
@@ -162,19 +189,19 @@ body.in-depth .depth__back {
 
 
 /* ============================================
-   PHILOSOPHY
+   THRESHOLD — Entry with stakes
    ============================================ */
-.philosophy { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
-.philosophy__image { position: relative; overflow: hidden; }
-.philosophy__img { width: 100%; height: 100%; object-fit: cover; }
-.philosophy__panel { padding: 6rem 4rem 6rem 3.5rem; background: var(--color-bg); border-left: 1px solid var(--color-border); position: relative; }
-.philosophy__panel::before { content: ''; position: absolute; top: 0; left: -80px; bottom: 0; width: 80px; background: linear-gradient(to left, var(--color-bg), transparent); pointer-events: none; }
-.philosophy__heading { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--color-accent-dim); margin-bottom: 2.5rem; }
-.philosophy__text { font-size: clamp(0.95rem, 1.3vw, 1.06rem); font-weight: 300; color: var(--color-text-body); line-height: 2; margin-bottom: 1.6rem; max-width: 48ch; }
-.philosophy__text--lead { font-size: clamp(1.2rem, 2.2vw, 1.65rem); font-weight: 300; color: var(--color-text-bright); line-height: 1.55; margin-bottom: 2.2rem; max-width: 32ch; }
-.philosophy__principle { margin-top: 2.5rem; padding: 1.8rem 2rem; border: 1px solid var(--color-border); background: rgba(12,20,17,0.3); }
-.philosophy__principle-label { display: block; font-size: 0.58rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent-dim); margin-bottom: 0.8rem; }
-.philosophy__principle-text { font-size: clamp(1rem, 1.6vw, 1.15rem); font-weight: 300; font-style: italic; color: var(--color-text); line-height: 1.7; }
+.threshold { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+.threshold__image { position: relative; overflow: hidden; }
+.threshold__img { width: 100%; height: 100%; object-fit: cover; }
+.threshold__panel { padding: 6rem 4rem 6rem 3.5rem; background: var(--color-bg); border-left: 1px solid var(--color-border); position: relative; }
+.threshold__panel::before { content: ''; position: absolute; top: 0; left: -80px; bottom: 0; width: 80px; background: linear-gradient(to left, var(--color-bg), transparent); pointer-events: none; }
+.threshold__label { display: block; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 2.5rem; }
+.threshold__text { font-size: clamp(0.95rem, 1.3vw, 1.06rem); font-weight: 300; color: var(--color-text-body); line-height: 2; margin-bottom: 1.6rem; max-width: 48ch; }
+.threshold__text--lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 300; color: var(--color-text-bright); line-height: 1.6; margin-bottom: 2.2rem; max-width: 36ch; }
+.threshold__warning { margin-top: 3rem; padding: 1.8rem 2rem; border: 1px solid rgba(196,169,110,0.12); background: rgba(196,169,110,0.03); }
+.threshold__warning-label { display: block; font-size: 0.58rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.8rem; }
+.threshold__warning-text { font-size: clamp(0.92rem, 1.4vw, 1.05rem); font-weight: 300; font-style: italic; color: var(--color-text); line-height: 1.8; }
 
 
 /* ============================================
@@ -275,7 +302,7 @@ body.in-depth .depth__back {
   margin-bottom: 0.6rem;
 }
 
-.portal__hint {
+.portal__hook {
   font-size: 0.85rem; font-weight: 300; font-style: italic;
   color: var(--color-text-dim);
   line-height: 1.6;
@@ -315,12 +342,30 @@ body.in-depth .depth__back {
   object-fit: cover;
 }
 
-/* Soft directional overlay — NOT a black wash */
+/* Directional overlay — distinct per realm */
 .chamber__overlay {
   position: fixed; inset: 0; z-index: 1;
+}
+
+/* Realm I: cold, structural — fade from right, steel-teal tint */
+.chamber__overlay--1 {
   background:
-    linear-gradient(to right, rgba(8,12,10,0.2) 0%, rgba(8,12,10,0.55) 40%, rgba(8,12,10,0.85) 65%, var(--color-bg) 100%),
-    linear-gradient(to bottom, rgba(8,12,10,0.3) 0%, transparent 30%, transparent 70%, rgba(8,12,10,0.6) 100%);
+    linear-gradient(to right, rgba(8,14,12,0.15) 0%, rgba(8,14,12,0.5) 38%, rgba(8,14,12,0.82) 60%, rgba(8,12,10,0.95) 100%),
+    linear-gradient(to bottom, rgba(8,14,12,0.25) 0%, transparent 30%, transparent 70%, rgba(8,12,10,0.5) 100%);
+}
+
+/* Realm II: warm, theatrical — fade from left, amber undertone */
+.chamber__overlay--2 {
+  background:
+    linear-gradient(to left, rgba(12,10,8,0.1) 0%, rgba(12,10,8,0.45) 35%, rgba(10,10,8,0.8) 58%, rgba(8,12,10,0.95) 100%),
+    linear-gradient(to bottom, rgba(10,10,8,0.2) 0%, transparent 35%, transparent 65%, rgba(8,12,10,0.45) 100%);
+}
+
+/* Realm III: deep, contemplative — fade from right, blue-green cast */
+.chamber__overlay--3 {
+  background:
+    linear-gradient(to right, rgba(6,12,14,0.1) 0%, rgba(6,12,14,0.5) 40%, rgba(8,12,10,0.85) 62%, rgba(8,12,10,0.95) 100%),
+    linear-gradient(to bottom, rgba(6,12,14,0.3) 0%, transparent 30%, transparent 70%, rgba(8,12,10,0.5) 100%);
 }
 
 .chamber__intro {
@@ -348,19 +393,18 @@ body.in-depth .depth__back {
   margin-bottom: 1.5rem;
 }
 
-.chamber__question {
+.chamber__address {
   font-size: clamp(0.95rem, 1.4vw, 1.08rem);
-  font-weight: 300; font-style: italic;
-  color: var(--color-text);
-  line-height: 1.75;
-  margin-bottom: 1rem;
+  font-weight: 300;
+  color: var(--color-text-body);
+  line-height: 1.9;
 }
 
-.chamber__desc {
-  font-size: clamp(0.88rem, 1.2vw, 0.96rem);
-  font-weight: 300;
-  color: var(--color-text-dim);
-  line-height: 1.85;
+/* Realm-specific intro positioning */
+.chamber--2 .chamber__intro,
+.chamber--2 .chamber__works {
+  margin-left: 10%;
+  margin-right: auto;
 }
 
 /* Work nodes within chamber */
@@ -411,11 +455,25 @@ body.in-depth .depth__back {
 .node:hover .node__format { color: var(--color-accent); }
 
 .node__title {
+  display: block;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 400;
   color: var(--color-text-bright);
   letter-spacing: 0.03em;
+  margin-bottom: 0.4rem;
 }
+
+.node__hook {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+  transition: color 0.6s;
+}
+
+.node:hover .node__hook { color: var(--color-text-body); }
 
 
 /* ============================================
@@ -473,11 +531,22 @@ body.in-depth .depth__back {
   margin-bottom: 1rem;
 }
 
-.workview__desc {
+.workview__experience {
   font-size: 0.95rem;
   font-weight: 300;
   color: var(--color-text-body);
   line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.workview__tension {
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-dim);
+  line-height: 1.85;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--color-border);
 }
 
 
@@ -504,10 +573,10 @@ body.in-depth .depth__back {
    RESPONSIVE
    ============================================ */
 @media (max-width: 900px) {
-  .philosophy { grid-template-columns: 1fr; }
-  .philosophy__image { height: 50vh; }
-  .philosophy__panel { padding: 3rem 2rem; border-left: none; border-top: 1px solid var(--color-border); }
-  .philosophy__panel::before { display: none; }
+  .threshold { grid-template-columns: 1fr; }
+  .threshold__image { height: 50vh; }
+  .threshold__panel { padding: 3rem 2rem; border-left: none; border-top: 1px solid var(--color-border); }
+  .threshold__panel::before { display: none; }
   .gateway__portals { grid-template-columns: 1fr; max-width: 400px; }
   .portal { aspect-ratio: 4 / 3; }
   .chamber__intro, .chamber__works { margin-right: 5%; max-width: none; margin-left: 5%; }

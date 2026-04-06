@@ -24,6 +24,11 @@
       w.classList.remove('is-active');
     });
 
+    // Update realm nav active state
+    document.querySelectorAll('.depth__realm-link').forEach(function (link) {
+      link.classList.toggle('is-active', link.getAttribute('data-realm') === realmId);
+    });
+
     // Transition
     body.classList.add('in-depth');
     depth.setAttribute('aria-hidden', 'false');
@@ -76,6 +81,14 @@
   // Back button
   document.querySelectorAll('[data-back]').forEach(function (btn) {
     btn.addEventListener('click', exitDepth);
+  });
+
+  // Realm nav links within depth (switch between realms)
+  document.querySelectorAll('.depth__realm-link').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-realm');
+      enterDepth(id);
+    });
   });
 
   // Work node clicks → open work detail
@@ -141,7 +154,7 @@
 
   function initScrollReveal() {
     var targets = document.querySelectorAll(
-      '.philosophy__heading, .philosophy__text, .philosophy__principle, ' +
+      '.threshold__label, .threshold__text, .threshold__warning, ' +
       '.gateway__heading, .gateway__subtitle, .portal, ' +
       '.closing__mark, .closing__statement, .closing__links'
     );
