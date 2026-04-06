@@ -160,8 +160,6 @@
       '.origin__text, .origin__rule, ' +
       '.gateway__heading, .gateway__subtitle, .portal, ' +
       '.works-index__heading, .works-index__realm, ' +
-      '.forms__label, .forms__intro, .forms__grid, ' +
-      '.trajectory__label, .trajectory__phases, ' +
       '.closing__mark, .closing__statement, .closing__links'
     );
 
