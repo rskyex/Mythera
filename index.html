@@ -27,268 +27,293 @@
 
   <!-- Atmosphere -->
   <div class="atmosphere" aria-hidden="true">
-    <div class="atmosphere__mist atmosphere__mist--top"></div>
-    <div class="atmosphere__mist atmosphere__mist--bottom"></div>
+    <div class="atmosphere__top"></div>
+    <div class="atmosphere__bottom"></div>
   </div>
 
   <!-- Nav -->
   <nav class="nav">
-    <a href="#" class="nav__logo">
+    <a href="#" class="nav__logo" data-nav="home">
       <img src="public/images/logo.png" alt="" class="nav__logo-img">
       <span class="nav__wordmark">MYTHERA</span>
     </a>
     <div class="nav__links">
       <a href="#philosophy" class="nav__link">Philosophy</a>
-      <a href="#realms" class="nav__link">Realms</a>
-      <a href="#works" class="nav__link">Works</a>
-      <a href="#closing" class="nav__link">Enter</a>
+      <a href="#gateway" class="nav__link" data-nav="gateway">Realms</a>
+      <a href="#" class="nav__link" data-nav="all-works">Works</a>
     </div>
   </nav>
 
-  <!-- ====== HERO ====== -->
-  <section class="hero">
-    <div class="hero__image" data-parallax="0.04"></div>
-    <div class="hero__vignette"></div>
+  <!-- ============================================================
+       SURFACE LAYER — Scrollable entry
+       ============================================================ -->
+  <div class="surface" id="surface">
 
-    <div class="hero__content" data-parallax="0.05">
-      <h1 class="hero__title">
-        <img src="public/images/wordmark.png" alt="MYTHERA" class="hero__wordmark-img">
-      </h1>
-      <div class="hero__rule"></div>
-      <p class="hero__subtitle">Interpretive worlds for memory, meaning, selfhood,<br>and the hidden structures that shape them.</p>
-    </div>
-
-    <div class="hero__scroll-cue">
-      <span class="hero__scroll-text">Scroll</span>
-      <div class="hero__scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ====== PHILOSOPHY — The conceptual introduction ====== -->
-  <section class="philosophy" id="philosophy">
-    <div class="philosophy__image">
-      <img src="public/images/mythera-3.png" alt="" class="philosophy__img">
-    </div>
-
-    <div class="philosophy__panel">
-      <h2 class="philosophy__heading">What is Mythera?</h2>
-
-      <p class="philosophy__text philosophy__text--lead">
-        Mythera is a studio that builds explorable interfaces for the structures
-        people live inside but cannot see.
-      </p>
-
-      <p class="philosophy__text">
-        Every culture, every institution, every algorithm, every literary tradition
-        carries hidden architectures — logics that shape subjectivity, distribute
-        attention, define authenticity, or decide what counts as meaningful.
-        These structures are real, but they are rarely visible. They operate beneath
-        the threshold of ordinary perception.
-      </p>
-
-      <p class="philosophy__text">
-        Mythera makes those structures explorable. Each project translates an invisible
-        system — how governance produces subjects, how narrative reshapes the self,
-        how aesthetic form carries emotional logic — into an interface you can navigate,
-        inhabit, and think within.
-      </p>
-
-      <p class="philosophy__text">
-        The chosen forms — games, simulations, atlases, visual essays — are not
-        decorative. They are epistemic. You cannot summarize what an institution does
-        to identity in a paragraph. But you can build a world where someone discovers it
-        by moving through it.
-      </p>
-
-      <div class="philosophy__principle">
-        <span class="philosophy__principle-label">Core principle</span>
-        <p class="philosophy__principle-text">The projects are not about hidden structures. They are the hidden structures, made newly legible.</p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__image" data-parallax="0.04"></div>
+      <div class="hero__vignette"></div>
+      <div class="hero__content" data-parallax="0.05">
+        <h1 class="hero__title">
+          <img src="public/images/wordmark.png" alt="MYTHERA" class="hero__wordmark-img">
+        </h1>
+        <div class="hero__rule"></div>
+        <p class="hero__subtitle">Interpretive worlds for memory, meaning, selfhood,<br>and the hidden structures that shape them.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ====== REALMS ====== -->
-  <section class="realms" id="realms">
-
-    <!-- Realm I -->
-    <article class="realm realm--1">
-      <div class="realm__scene">
-        <img src="public/images/mythera-1.png" alt="" class="realm__img" data-parallax="0.02">
+      <div class="hero__scroll-cue">
+        <span class="hero__scroll-text">Scroll</span>
+        <div class="hero__scroll-line"></div>
       </div>
-      <div class="realm__panel">
-        <span class="realm__index">Realm I</span>
-        <h2 class="realm__title">Self, Systems &amp;<br>Subject Formation</h2>
-        <p class="realm__question">What do institutions, algorithms, and governance structures make of us — and what remains when we try to see the process from within?</p>
-        <p class="realm__desc">Projects about AI, memory, mediation, governance, and the kinds of subjects systems produce. The focus is not technology itself, but the self that emerges from its operations.</p>
-        <div class="realm__works">
-          <span class="realm__work-tag">Second Self</span>
-          <span class="realm__work-tag">Narrative Drift</span>
-          <span class="realm__work-tag">Existential Wager</span>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy" id="philosophy">
+      <div class="philosophy__image">
+        <img src="public/images/mythera-3.png" alt="" class="philosophy__img">
+      </div>
+      <div class="philosophy__panel">
+        <h2 class="philosophy__heading">What is Mythera?</h2>
+        <p class="philosophy__text philosophy__text--lead">
+          A studio that builds explorable interfaces for the structures
+          people live inside but cannot see.
+        </p>
+        <p class="philosophy__text">
+          Every culture, institution, algorithm, and literary tradition carries hidden
+          architectures — logics that shape subjectivity, distribute attention, define
+          authenticity, or decide what counts as meaningful. These structures are real,
+          but they operate beneath the threshold of ordinary perception.
+        </p>
+        <p class="philosophy__text">
+          Mythera makes those structures explorable. Each project translates an invisible
+          system into an interface you can navigate, inhabit, and think within.
+        </p>
+        <div class="philosophy__principle">
+          <span class="philosophy__principle-label">Core principle</span>
+          <p class="philosophy__principle-text">The projects are not about hidden structures. They are the hidden structures, made newly legible.</p>
         </div>
       </div>
-    </article>
+    </section>
 
-    <!-- Realm II -->
-    <article class="realm realm--2">
-      <div class="realm__scene">
-        <img src="public/images/mythera-2.png" alt="" class="realm__img" data-parallax="0.02">
+    <!-- GATEWAY — Realm selector -->
+    <section class="gateway" id="gateway">
+      <h2 class="gateway__heading">Choose a Realm</h2>
+      <p class="gateway__subtitle">Each realm investigates a different axis of hidden structure.</p>
+
+      <div class="gateway__portals">
+
+        <button class="portal" data-realm="1" type="button">
+          <div class="portal__image">
+            <img src="public/images/mythera-1.png" alt="" class="portal__img">
+          </div>
+          <div class="portal__content">
+            <span class="portal__index">I</span>
+            <h3 class="portal__title">Self, Systems &amp; Subject Formation</h3>
+            <p class="portal__hint">What do institutions and algorithms make of us?</p>
+            <span class="portal__cta">Enter realm &rarr;</span>
+          </div>
+        </button>
+
+        <button class="portal" data-realm="2" type="button">
+          <div class="portal__image">
+            <img src="public/images/mythera-2.png" alt="" class="portal__img">
+          </div>
+          <div class="portal__content">
+            <span class="portal__index">II</span>
+            <h3 class="portal__title">Literature, Self &amp; Performance</h3>
+            <p class="portal__hint">Where does sincerity become spectacle?</p>
+            <span class="portal__cta">Enter realm &rarr;</span>
+          </div>
+        </button>
+
+        <button class="portal" data-realm="3" type="button">
+          <div class="portal__image">
+            <img src="public/images/mythera-6.png" alt="" class="portal__img">
+          </div>
+          <div class="portal__content">
+            <span class="portal__index">III</span>
+            <h3 class="portal__title">Cultural Interpretation &amp; Aesthetic Legibility</h3>
+            <p class="portal__hint">Can the structures of culture be made visible?</p>
+            <span class="portal__cta">Enter realm &rarr;</span>
+          </div>
+        </button>
+
       </div>
-      <div class="realm__panel">
-        <span class="realm__index">Realm II</span>
-        <h2 class="realm__title">Literature, Self &amp;<br>Performance</h2>
-        <p class="realm__question">Where does autobiography become mythology? When does sincerity become indistinguishable from spectacle?</p>
-        <p class="realm__desc">Projects about authenticity, masks, spectatorship, contradiction, aesthetics, death, and the unfinished self. The space between a life written and a life staged.</p>
-        <div class="realm__works">
-          <span class="realm__work-tag">Mishima Atlas</span>
-          <span class="realm__work-tag">Existential Wager</span>
-        </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing">
+      <img src="public/images/logo.png" alt="" class="closing__mark">
+      <p class="closing__statement">Mythera makes hidden structures<br>newly legible.</p>
+      <div class="closing__rule"></div>
+      <div class="closing__links">
+        <a href="#" class="closing__link" data-nav="gateway">Explore the realms</a>
+        <a href="#" class="closing__link" data-nav="all-works">View all works</a>
+        <a href="#" class="closing__link">Contact</a>
       </div>
-    </article>
+    </section>
 
-    <!-- Realm III -->
-    <article class="realm realm--3">
-      <div class="realm__scene">
-        <img src="public/images/mythera-6.png" alt="" class="realm__img" data-parallax="0.02">
+    <footer class="footer">
+      <div class="footer__rule"></div>
+      <p class="footer__text">MYTHERA</p>
+      <p class="footer__sub">An interpretive studio</p>
+    </footer>
+
+  </div><!-- /surface -->
+
+
+  <!-- ============================================================
+       DEPTH LAYER — Realm chambers (hidden by default)
+       ============================================================ -->
+  <div class="depth" id="depth" aria-hidden="true">
+
+    <button class="depth__back" type="button" data-back>
+      <span class="depth__back-arrow">&larr;</span>
+      <span class="depth__back-text">Return</span>
+    </button>
+
+    <!-- REALM 1 CHAMBER -->
+    <div class="chamber" data-chamber="1">
+      <div class="chamber__bg">
+        <img src="public/images/mythera-1.png" alt="" class="chamber__bg-img">
       </div>
-      <div class="realm__panel">
-        <span class="realm__index">Realm III</span>
-        <h2 class="realm__title">Cultural Interpretation &amp;<br>Aesthetic Legibility</h2>
-        <p class="realm__question">Can the structures of literature and music be made perceptible to anyone — without requiring specialist expertise?</p>
-        <p class="realm__desc">Projects that translate the emotional and formal logic of cultural works into navigable interfaces. Making visible what was always felt but never seen.</p>
-        <div class="realm__works">
-          <span class="realm__work-tag">LitPulse</span>
-          <span class="realm__work-tag">Scoreless</span>
-        </div>
+      <div class="chamber__overlay"></div>
+
+      <div class="chamber__intro">
+        <span class="chamber__index">Realm I</span>
+        <h2 class="chamber__title">Self, Systems &amp; Subject Formation</h2>
+        <p class="chamber__question">What do institutions, algorithms, and governance structures make of us — and what remains when we try to see the process from within?</p>
+        <p class="chamber__desc">Projects about AI, memory, mediation, governance, and the kinds of subjects systems produce.</p>
       </div>
-    </article>
 
-  </section>
+      <div class="chamber__works">
+        <h3 class="chamber__works-label">Works in this realm</h3>
 
-  <!-- ====== WORKS ====== -->
-  <section class="works" id="works">
-    <div class="works__inner">
-      <h2 class="works__heading">Works</h2>
+        <button class="node" data-work="second-self" type="button">
+          <span class="node__format">Strategy Game</span>
+          <span class="node__title">Second Self</span>
+        </button>
 
-      <div class="works__grid">
+        <button class="node" data-work="narrative-drift" type="button">
+          <span class="node__format">Interactive Simulation</span>
+          <span class="node__title">Narrative Drift</span>
+        </button>
 
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Strategy Game</span>
-          <h3 class="work__title">Second Self</h3>
-          <p class="work__desc">A philosophy strategy game about AI, memory, governance, and the kinds of subjects institutions produce.</p>
-          <span class="work__realm-tag">Realm I</span>
-        </article>
+        <button class="node" data-work="existential-wager" type="button">
+          <span class="node__format">Philosophical Simulation</span>
+          <span class="node__title">Existential Wager</span>
+        </button>
+      </div>
 
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Interactive Simulation</span>
-          <h3 class="work__title">Narrative Drift</h3>
-          <p class="work__desc">How ordinary algorithmic choices gradually reshape the self — not through crisis, but through drift.</p>
-          <span class="work__realm-tag">Realm I</span>
-        </article>
+      <!-- Expanded work details (hidden until clicked) -->
+      <div class="workview" data-workview="second-self">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Strategy Game</span>
+        <h3 class="workview__title">Second Self</h3>
+        <p class="workview__desc">A philosophy strategy game about AI, memory, governance, and the kinds of subjects institutions produce. Players navigate institutional systems that shape identity — and discover how little of the self remains untouched.</p>
+      </div>
 
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Atlas / Interpretation Interface</span>
-          <h3 class="work__title">Mishima Atlas</h3>
-          <p class="work__desc">A navigable architecture of Mishima's world across aesthetics, death, performance, politics, and remainder.</p>
-          <span class="work__realm-tag">Realm II</span>
-        </article>
+      <div class="workview" data-workview="narrative-drift">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Interactive Simulation</span>
+        <h3 class="workview__title">Narrative Drift</h3>
+        <p class="workview__desc">How ordinary algorithmic choices gradually reshape the self — not through crisis, but through drift. Small decisions accumulate until the person you were becomes unrecognizable.</p>
+      </div>
 
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Literary Interface</span>
-          <h3 class="work__title">LitPulse</h3>
-          <p class="work__desc">Rhythm, tension, pacing, and tone rendered as navigable structure — legible without specialist training.</p>
-          <span class="work__realm-tag">Realm III</span>
-        </article>
-
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Music Interface</span>
-          <h3 class="work__title">Scoreless</h3>
-          <p class="work__desc">The architecture of sound made spatial and intuitive — structure without score.</p>
-          <span class="work__realm-tag">Realm III</span>
-        </article>
-
-        <article class="work">
-          <div class="work__glass"></div>
-          <span class="work__format">Philosophical Simulation</span>
-          <h3 class="work__title">Existential Wager</h3>
-          <p class="work__desc">Where commitment to ideals exposes contradiction, theatre, and self-mythologization.</p>
-          <span class="work__realm-tag">Realm I &middot; II</span>
-        </article>
-
+      <div class="workview" data-workview="existential-wager">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Philosophical Simulation</span>
+        <h3 class="workview__title">Existential Wager</h3>
+        <p class="workview__desc">Where commitment to ideals gradually exposes contradiction, theatre, and self-mythologization. The wager is whether sincerity survives its own performance.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ====== WIDER WORLD ====== -->
-  <section class="archive" id="archive">
-    <div class="archive__bg">
-      <img src="public/images/mythera-8.png" alt="" class="archive__bg-img">
-    </div>
-    <div class="archive__inner">
-      <h2 class="archive__heading">The Wider World</h2>
-      <p class="archive__intro">Beyond the featured works, Mythera contains an expanding constellation of investigations.</p>
+    <!-- REALM 2 CHAMBER -->
+    <div class="chamber" data-chamber="2">
+      <div class="chamber__bg">
+        <img src="public/images/mythera-2.png" alt="" class="chamber__bg-img">
+      </div>
+      <div class="chamber__overlay"></div>
 
-      <div class="archive__branches">
-        <div class="archive__branch">
-          <span class="archive__branch-label">Realm II</span>
-          <span class="archive__node">Theatre of Authenticity</span>
-          <span class="archive__node">Mask / Remainder</span>
-          <span class="archive__node">Confessions of a Mask</span>
-        </div>
-        <div class="archive__branch">
-          <span class="archive__branch-label">Realm I &middot; II</span>
-          <span class="archive__node">Beautiful Catastrophe</span>
-          <span class="archive__node">Remainder</span>
-        </div>
+      <div class="chamber__intro">
+        <span class="chamber__index">Realm II</span>
+        <h2 class="chamber__title">Literature, Self &amp; Performance</h2>
+        <p class="chamber__question">Where does autobiography become mythology? When does sincerity become indistinguishable from spectacle?</p>
+        <p class="chamber__desc">Projects about authenticity, masks, spectatorship, contradiction, aesthetics, death, and the unfinished self.</p>
       </div>
 
-      <p class="archive__coda">More works emerge as the world deepens.</p>
+      <div class="chamber__works">
+        <h3 class="chamber__works-label">Works in this realm</h3>
+
+        <button class="node" data-work="mishima-atlas" type="button">
+          <span class="node__format">Atlas / Interpretation Interface</span>
+          <span class="node__title">Mishima Atlas</span>
+        </button>
+
+        <button class="node" data-work="existential-wager-2" type="button">
+          <span class="node__format">Philosophical Simulation</span>
+          <span class="node__title">Existential Wager</span>
+        </button>
+      </div>
+
+      <div class="workview" data-workview="mishima-atlas">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Atlas / Interpretation Interface</span>
+        <h3 class="workview__title">Mishima Atlas</h3>
+        <p class="workview__desc">A navigable architecture of Mishima's world across aesthetics, death, performance, politics, and remainder. A life that refused to separate art from action, made explorable.</p>
+      </div>
+
+      <div class="workview" data-workview="existential-wager-2">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Philosophical Simulation</span>
+        <h3 class="workview__title">Existential Wager</h3>
+        <p class="workview__desc">Where commitment to ideals gradually exposes contradiction, theatre, and self-mythologization. The wager is whether sincerity survives its own performance.</p>
+      </div>
     </div>
-  </section>
 
-  <!-- ====== FORMS ====== -->
-  <section class="forms" id="forms">
-    <h2 class="forms__heading">Studio Logic</h2>
-    <p class="forms__intro">Mythera works across forms — each chosen for the question it serves.</p>
-    <div class="forms__field">
-      <span class="forms__node">Games</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Interactive Simulations</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Atlases</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Visual Essays</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Identity Builders</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Philosophy Tools</span>
-      <span class="forms__sep">&middot;</span>
-      <span class="forms__node">Exhibition-Ready Digital Works</span>
+    <!-- REALM 3 CHAMBER -->
+    <div class="chamber" data-chamber="3">
+      <div class="chamber__bg">
+        <img src="public/images/mythera-6.png" alt="" class="chamber__bg-img">
+      </div>
+      <div class="chamber__overlay"></div>
+
+      <div class="chamber__intro">
+        <span class="chamber__index">Realm III</span>
+        <h2 class="chamber__title">Cultural Interpretation &amp; Aesthetic Legibility</h2>
+        <p class="chamber__question">Can the structures of literature and music be made perceptible to anyone — without requiring specialist expertise?</p>
+        <p class="chamber__desc">Projects that translate the emotional and formal logic of cultural works into navigable interfaces.</p>
+      </div>
+
+      <div class="chamber__works">
+        <h3 class="chamber__works-label">Works in this realm</h3>
+
+        <button class="node" data-work="litpulse" type="button">
+          <span class="node__format">Literary Interface</span>
+          <span class="node__title">LitPulse</span>
+        </button>
+
+        <button class="node" data-work="scoreless" type="button">
+          <span class="node__format">Music Interface</span>
+          <span class="node__title">Scoreless</span>
+        </button>
+      </div>
+
+      <div class="workview" data-workview="litpulse">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Literary Interface</span>
+        <h3 class="workview__title">LitPulse</h3>
+        <p class="workview__desc">Rhythm, tension, pacing, and tone rendered as navigable structure — legible without specialist training. The emotional architecture of literature, made visible.</p>
+      </div>
+
+      <div class="workview" data-workview="scoreless">
+        <button class="workview__close" data-close-work type="button">&times;</button>
+        <span class="workview__format">Music Interface</span>
+        <h3 class="workview__title">Scoreless</h3>
+        <p class="workview__desc">The architecture of sound made spatial and intuitive — structure, tension, and movement without reading a score.</p>
+      </div>
     </div>
-  </section>
 
-  <!-- ====== CLOSING ====== -->
-  <section class="closing" id="closing">
-    <img src="public/images/logo.png" alt="" class="closing__mark">
-    <p class="closing__statement">Mythera makes hidden structures<br>newly legible.</p>
-    <div class="closing__rule"></div>
-    <nav class="closing__links">
-      <a href="#works" class="closing__link">Explore the works</a>
-      <a href="#archive" class="closing__link">Enter the archive</a>
-      <a href="#" class="closing__link">Contact</a>
-    </nav>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__rule"></div>
-    <p class="footer__text">MYTHERA</p>
-    <p class="footer__sub">An interpretive studio</p>
-  </footer>
+  </div><!-- /depth -->
 
   <script src="main.js"></script>
 </body>

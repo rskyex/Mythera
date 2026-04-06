@@ -1,25 +1,152 @@
 /* =============================================
-   MYTHERA — Interaction layer
+   MYTHERA — Click-based world interaction
    ============================================= */
 
 (function () {
   'use strict';
 
-  /* Scroll Reveal */
+  var body = document.body;
+  var depth = document.getElementById('depth');
+  var surface = document.getElementById('surface');
+
+  /* ---- View state ---- */
+
+  function enterDepth(realmId) {
+    // Hide all chambers, show the right one
+    document.querySelectorAll('.chamber').forEach(function (c) {
+      c.classList.remove('is-active');
+    });
+    var chamber = document.querySelector('[data-chamber="' + realmId + '"]');
+    if (chamber) chamber.classList.add('is-active');
+
+    // Close any open workviews
+    document.querySelectorAll('.workview.is-active').forEach(function (w) {
+      w.classList.remove('is-active');
+    });
+
+    // Transition
+    body.classList.add('in-depth');
+    depth.setAttribute('aria-hidden', 'false');
+    depth.scrollTop = 0;
+
+    // Push state so browser back works
+    history.pushState({ realm: realmId }, '', '#realm-' + realmId);
+  }
+
+  function exitDepth() {
+    body.classList.remove('in-depth');
+    depth.setAttribute('aria-hidden', 'true');
+
+    // Close workviews
+    document.querySelectorAll('.workview.is-active').forEach(function (w) {
+      w.classList.remove('is-active');
+    });
+
+    history.pushState({}, '', '#gateway');
+  }
+
+  function openWork(workId) {
+    // Close any other open workview in same chamber
+    var activeChamber = document.querySelector('.chamber.is-active');
+    if (!activeChamber) return;
+    activeChamber.querySelectorAll('.workview.is-active').forEach(function (w) {
+      w.classList.remove('is-active');
+    });
+
+    var view = activeChamber.querySelector('[data-workview="' + workId + '"]');
+    if (view) view.classList.add('is-active');
+  }
+
+  function closeWork() {
+    document.querySelectorAll('.workview.is-active').forEach(function (w) {
+      w.classList.remove('is-active');
+    });
+  }
+
+
+  /* ---- Event listeners ---- */
+
+  // Portal clicks → enter realm
+  document.querySelectorAll('[data-realm]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      enterDepth(btn.getAttribute('data-realm'));
+    });
+  });
+
+  // Back button
+  document.querySelectorAll('[data-back]').forEach(function (btn) {
+    btn.addEventListener('click', exitDepth);
+  });
+
+  // Work node clicks → open work detail
+  document.querySelectorAll('[data-work]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openWork(btn.getAttribute('data-work'));
+    });
+  });
+
+  // Close work detail
+  document.querySelectorAll('[data-close-work]').forEach(function (btn) {
+    btn.addEventListener('click', closeWork);
+  });
+
+  // Nav links
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var action = link.getAttribute('data-nav');
+      if (action === 'home') {
+        e.preventDefault();
+        if (body.classList.contains('in-depth')) exitDepth();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'gateway') {
+        e.preventDefault();
+        if (body.classList.contains('in-depth')) exitDepth();
+        setTimeout(function () {
+          document.getElementById('gateway').scrollIntoView({ behavior: 'smooth' });
+        }, body.classList.contains('in-depth') ? 600 : 0);
+      } else if (action === 'all-works') {
+        e.preventDefault();
+        // Enter realm 1 as default works view
+        enterDepth('1');
+      }
+    });
+  });
+
+  // Browser back/forward
+  window.addEventListener('popstate', function (e) {
+    if (e.state && e.state.realm) {
+      enterDepth(e.state.realm);
+    } else {
+      if (body.classList.contains('in-depth')) {
+        body.classList.remove('in-depth');
+        depth.setAttribute('aria-hidden', 'true');
+      }
+    }
+  });
+
+  // Escape key closes depth or workview
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var openWork = document.querySelector('.workview.is-active');
+      if (openWork) {
+        closeWork();
+      } else if (body.classList.contains('in-depth')) {
+        exitDepth();
+      }
+    }
+  });
+
+
+  /* ---- Scroll Reveal (surface only) ---- */
+
   function initScrollReveal() {
     var targets = document.querySelectorAll(
       '.philosophy__heading, .philosophy__text, .philosophy__principle, ' +
-      '.realm__panel, ' +
-      '.works__heading, .work, ' +
-      '.archive__heading, .archive__intro, .archive__branch, .archive__coda, ' +
-      '.forms__heading, .forms__intro, .forms__field, ' +
+      '.gateway__heading, .gateway__subtitle, .portal, ' +
       '.closing__mark, .closing__statement, .closing__links'
     );
 
     targets.forEach(function (el) { el.classList.add('reveal'); });
-
-    var grid = document.querySelector('.works__grid');
-    if (grid) grid.classList.add('reveal-stagger');
 
     if (!('IntersectionObserver' in window)) {
       targets.forEach(function (el) { el.classList.add('is-visible'); });
@@ -38,17 +165,20 @@
     targets.forEach(function (el) { observer.observe(el); });
   }
 
-  /* Hero parallax */
-  function initHeroParallax() {
+
+  /* ---- Hero parallax + fade ---- */
+
+  function initHeroEffects() {
     var hero = document.querySelector('.hero');
     if (!hero) return;
     var layers = hero.querySelectorAll('[data-parallax]');
-    if (!layers.length) return;
+    var content = hero.querySelector('.hero__content');
+    var cue = hero.querySelector('.hero__scroll-cue');
     var heroH = hero.offsetHeight;
     var ticking = false;
 
     window.addEventListener('scroll', function () {
-      if (ticking) return;
+      if (ticking || body.classList.contains('in-depth')) return;
       ticking = true;
       requestAnimationFrame(function () {
         var y = window.scrollY;
@@ -57,80 +187,35 @@
             var r = parseFloat(l.getAttribute('data-parallax')) || 0;
             l.style.transform = 'translate3d(0,' + (y * r) + 'px,0)';
           });
+          if (content) {
+            var p = Math.min(1, y / 700);
+            content.style.opacity = Math.max(0, 1 - p * p);
+          }
+          if (cue) {
+            cue.style.opacity = Math.max(0, (1 - Math.min(1, y / 250)) * 0.4);
+          }
         }
         ticking = false;
       });
     }, { passive: true });
   }
 
-  /* Hero fade */
-  function initHeroFade() {
-    var content = document.querySelector('.hero__content');
-    var cue = document.querySelector('.hero__scroll-cue');
-    if (!content) return;
-    var ticking = false;
 
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        var y = window.scrollY;
-        var p = Math.min(1, y / 700);
-        content.style.opacity = Math.max(0, 1 - p * p);
-        if (cue) cue.style.opacity = Math.max(0, (1 - Math.min(1, y / 250)) * 0.4);
-        ticking = false;
-      });
-    }, { passive: true });
-  }
+  /* ---- Init ---- */
 
-  /* Realm image parallax */
-  function initRealmParallax() {
-    var imgs = document.querySelectorAll('.realm__img[data-parallax]');
-    if (!imgs.length) return;
-    var ticking = false;
-
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        var vh = window.innerHeight;
-        imgs.forEach(function (img) {
-          var rect = img.parentElement.parentElement.getBoundingClientRect();
-          if (rect.bottom < -100 || rect.top > vh + 100) return;
-          var progress = 1 - (rect.top + rect.height) / (vh + rect.height);
-          progress = Math.max(0, Math.min(1, progress));
-          var shift = (progress - 0.5) * 30;
-          img.style.transform = 'translate3d(0,' + shift + 'px,0) scale(1.06)';
-        });
-        ticking = false;
-      });
-    }, { passive: true });
-  }
-
-  /* Work panel tilt */
-  function initPanelTilt() {
-    document.querySelectorAll('.work').forEach(function (panel) {
-      panel.addEventListener('mousemove', function (e) {
-        var rect = panel.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width - 0.5;
-        var y = (e.clientY - rect.top) / rect.height - 0.5;
-        panel.style.transform = 'translateY(-3px) rotateY(' + (x * 2.5) + 'deg) rotateX(' + (-y * 2.5) + 'deg)';
-      });
-      panel.addEventListener('mouseleave', function () {
-        panel.style.transform = '';
-      });
-    });
-  }
-
-  /* Init */
   document.addEventListener('DOMContentLoaded', function () {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     initScrollReveal();
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduced) {
-      initHeroParallax();
-      initHeroFade();
-      initRealmParallax();
-      initPanelTilt();
+      initHeroEffects();
+    }
+
+    // Handle direct URL entry with hash
+    var hash = window.location.hash;
+    if (hash.startsWith('#realm-')) {
+      var id = hash.replace('#realm-', '');
+      enterDepth(id);
     }
   });
 
