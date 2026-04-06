@@ -895,13 +895,13 @@ body.in-depth .depth__realms-nav {
 .closing__link:hover::after { transform: scaleX(1); }
 
 .footer { padding: 3rem 3rem 4rem; text-align: center; }
-.footer__rule { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(80,100,90,0.15), transparent); margin: 0 auto 1.5rem; }
-.footer__text { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.5em; color: var(--color-text-muted); margin-bottom: 0.4rem; }
-.footer__sub { font-size: 0.52rem; font-weight: 300; font-style: italic; letter-spacing: 0.15em; color: var(--color-text-muted); opacity: 0.5; }
-.footer__signature { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(80,100,90,0.08); }
-.footer__author { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.12em; color: var(--color-text-muted); opacity: 0.6; }
-.footer__author-link { color: var(--color-text-dim); text-decoration: none; transition: color 0.6s; }
-.footer__author-link:hover { color: var(--color-accent); }
+.footer__rule { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(80,100,90,0.2), transparent); margin: 0 auto 1.5rem; }
+.footer__text { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.5em; color: var(--color-text-dim); margin-bottom: 0.4rem; }
+.footer__sub { font-size: 0.65rem; font-weight: 300; font-style: italic; letter-spacing: 0.15em; color: var(--color-text-dim); opacity: 0.6; }
+.footer__signature { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(80,100,90,0.12); }
+.footer__rights { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.1em; color: var(--color-text-body); }
+.footer__author-link { color: var(--color-silver); text-decoration: none; transition: color 0.6s; border-bottom: 1px solid rgba(196,169,110,0.2); padding-bottom: 1px; }
+.footer__author-link:hover { color: var(--color-accent); border-bottom-color: rgba(196,169,110,0.5); }
 
 
 /* ============================================
