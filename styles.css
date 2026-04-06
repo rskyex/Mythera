@@ -201,7 +201,7 @@ a {
 .hero__image {
   position: absolute;
   inset: -5% -2% -5% -2%;
-  background-image: url('public/images/mythera (5).png');
+  background-image: url('public/images/mythera-5.png');
   background-size: cover;
   background-position: center 35%;
   will-change: transform;
@@ -577,15 +577,15 @@ a {
 }
 
 .realm__texture--1 {
-  background: url('public/images/mythera (1).png') center / cover no-repeat;
+  background: url('public/images/mythera-1.png') center / cover no-repeat;
 }
 
 .realm__texture--2 {
-  background: url('public/images/mythera (2).png') center / cover no-repeat;
+  background: url('public/images/mythera-2.png') center / cover no-repeat;
 }
 
 .realm__texture--3 {
-  background: url('public/images/mythera (6).png') center / cover no-repeat;
+  background: url('public/images/mythera-6.png') center / cover no-repeat;
 }
 
 .realm:hover .realm__texture {
