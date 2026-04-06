@@ -155,6 +155,7 @@
   function initScrollReveal() {
     var targets = document.querySelectorAll(
       '.threshold__label, .threshold__text, .threshold__warning, ' +
+      '.origin__text, .origin__rule, ' +
       '.gateway__heading, .gateway__subtitle, .portal, ' +
       '.closing__mark, .closing__statement, .closing__links'
     );
