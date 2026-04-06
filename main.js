@@ -117,10 +117,12 @@
         setTimeout(function () {
           document.getElementById('gateway').scrollIntoView({ behavior: 'smooth' });
         }, body.classList.contains('in-depth') ? 600 : 0);
-      } else if (action === 'all-works') {
+      } else if (action === 'works') {
         e.preventDefault();
-        // Enter realm 1 as default works view
-        enterDepth('1');
+        if (body.classList.contains('in-depth')) exitDepth();
+        setTimeout(function () {
+          document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+        }, body.classList.contains('in-depth') ? 600 : 0);
       }
     });
   });
@@ -154,9 +156,12 @@
 
   function initScrollReveal() {
     var targets = document.querySelectorAll(
-      '.threshold__label, .threshold__text, .threshold__warning, ' +
+      '.about__label, .about__text, ' +
       '.origin__text, .origin__rule, ' +
       '.gateway__heading, .gateway__subtitle, .portal, ' +
+      '.works-index__heading, .works-index__realm, ' +
+      '.forms__label, .forms__intro, .forms__grid, ' +
+      '.trajectory__label, .trajectory__phases, ' +
       '.closing__mark, .closing__statement, .closing__links'
     );
 
