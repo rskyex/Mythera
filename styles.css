@@ -349,14 +349,30 @@ body.in-depth .depth__realms-nav {
   gap: 2.5rem;
 }
 
-.origin__rule {
-  width: 28px; height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-accent-dim), transparent);
-  opacity: 0.35;
+.origin__profile {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 24px rgba(5,8,7,0.4);
+}
+
+.origin__profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.origin__name {
+  font-weight: 400;
+  color: var(--color-text-bright);
+  font-style: normal;
 }
 
 .origin__text {
-  font-size: clamp(0.88rem, 1.2vw, 0.96rem);
+  font-size: clamp(0.85rem, 1.1vw, 0.94rem);
   font-weight: 300;
   font-style: italic;
   color: var(--color-text-dim);
@@ -365,17 +381,66 @@ body.in-depth .depth__realms-nav {
   max-width: 42ch;
 }
 
-.origin__link {
-  color: var(--color-silver);
-  transition: color 0.6s;
+.origin__card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--color-glass-edge);
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 6px;
+  max-width: 360px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(196,169,110,0.2);
-  padding-bottom: 1px;
+  transition: border-color 0.6s, box-shadow 0.6s, transform 0.6s;
 }
 
-.origin__link:hover {
+.origin__card:hover {
+  border-color: rgba(196,169,110,0.25);
+  box-shadow: 0 8px 30px rgba(5,8,7,0.4);
+  transform: translateY(-2px);
+}
+
+.origin__card-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.origin__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.origin__card-title {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-text-bright);
+}
+
+.origin__card-desc {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.origin__card-arrow {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: color 0.6s;
+}
+
+.origin__card:hover .origin__card-arrow {
   color: var(--color-accent);
-  border-bottom-color: rgba(196,169,110,0.5);
 }
 
 
