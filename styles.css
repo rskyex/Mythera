@@ -291,21 +291,40 @@ img { display: block; max-width: 100%; }
 
 
 /* ============================================
-   THREE REALMS — Compact cards
+   THREE REALMS — Cards over shared background
    ============================================ */
 .realms {
+  position: relative;
   padding: 5rem 3rem 4rem;
   text-align: center;
+  overflow: hidden;
+}
+
+.realms__bg {
+  position: absolute; inset: -6% -3%;
+  background: url('public/images/mythera-1.png') center 40% / cover no-repeat;
+  z-index: 0;
+  transition: transform 1.2s ease;
+}
+
+.realms__bg-vignette {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, transparent 20%, rgba(8,12,10,0.5) 100%),
+    linear-gradient(180deg, rgba(8,12,10,0.7) 0%, rgba(8,12,10,0.25) 30%, rgba(8,12,10,0.25) 70%, rgba(8,12,10,0.8) 100%);
 }
 
 .realms__heading {
+  position: relative; z-index: 2;
   font-size: clamp(1.3rem, 2.5vw, 1.8rem);
   font-weight: 400; letter-spacing: 0.18em;
   color: var(--color-silver); text-transform: uppercase;
   margin-bottom: 3rem;
+  text-shadow: 0 2px 20px rgba(8,12,10,0.9);
 }
 
 .realms__grid {
+  position: relative; z-index: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
@@ -316,50 +335,21 @@ img { display: block; max-width: 100%; }
 /* Realm card */
 .realm-card {
   position: relative;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
+  padding: 2.2rem 1.8rem;
+  background: rgba(8, 14, 12, 0.55);
   border: 1px solid var(--color-glass-edge);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   text-align: left;
   cursor: default;
-  transition: transform 0.8s cubic-bezier(0.25,0.1,0.25,1), border-color 0.8s, box-shadow 0.8s;
-}
-
-.realm-card__image {
-  position: absolute; inset: 0;
-  overflow: hidden;
-}
-
-.realm-card__img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s ease;
-}
-
-.realm-card:hover .realm-card__img {
-  transform: scale(1.05);
-}
-
-.realm-card::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to top, rgba(8,12,10,0.92) 0%, rgba(8,12,10,0.6) 30%, rgba(8,12,10,0.15) 55%, transparent 100%);
-  transition: background 0.8s;
-}
-
-.realm-card:hover::after {
-  background: linear-gradient(to top, rgba(8,12,10,0.85) 0%, rgba(8,12,10,0.4) 30%, rgba(8,12,10,0.08) 55%, transparent 100%);
+  transition: transform 0.8s cubic-bezier(0.25,0.1,0.25,1), border-color 0.8s, box-shadow 0.8s, background 0.8s;
 }
 
 .realm-card:hover {
   border-color: rgba(80,100,90,0.3);
   box-shadow: 0 20px 60px rgba(5,8,7,0.5);
   transform: translateY(-4px);
-}
-
-.realm-card__body {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  z-index: 2;
-  padding: 1.8rem;
+  background: rgba(8, 14, 12, 0.7);
 }
 
 .realm-card__index {
@@ -673,7 +663,6 @@ img { display: block; max-width: 100%; }
    ============================================ */
 @media (max-width: 900px) {
   .realms__grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-  .realm-card { aspect-ratio: 4 / 3; }
   .works__grid { grid-template-columns: 1fr; }
   .works { padding: 4rem 2rem 3rem; }
   .about { padding: 4rem 2rem 3rem; }

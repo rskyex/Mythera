@@ -4,6 +4,15 @@
   "rewrites": [
     { "source": "/works/second-self", "destination": "/works/second-self.html" },
     { "source": "/works/narrative-drift", "destination": "/works/narrative-drift.html" },
-    { "source": "/works/theatre-of-authenticity", "destination": "/works/theatre-of-authenticity.html" }
+    { "source": "/works/theatre-of-authenticity", "destination": "/works/theatre-of-authenticity.html" },
+    { "source": "/works/underground", "destination": "/works/underground.html" },
+    { "source": "/works/the-possessed", "destination": "/works/the-possessed.html" },
+    { "source": "/works/ivan-alyosha-kirillov", "destination": "/works/ivan-alyosha-kirillov.html" },
+    { "source": "/works/becoming", "destination": "/works/becoming.html" },
+    { "source": "/works/the-last-man", "destination": "/works/the-last-man.html" },
+    { "source": "/works/archive-of-being", "destination": "/works/archive-of-being.html" },
+    { "source": "/works/after-reason", "destination": "/works/after-reason.html" },
+    { "source": "/works/memory-regimes", "destination": "/works/memory-regimes.html" },
+    { "source": "/works/counterpublics", "destination": "/works/counterpublics.html" }
   ]
 }
