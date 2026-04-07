@@ -1,4 +1,8 @@
 {
   "buildCommand": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/works/second-self", "destination": "/works/second-self.html" },
+    { "source": "/works/narrative-drift", "destination": "/works/narrative-drift.html" }
+  ]
 }
