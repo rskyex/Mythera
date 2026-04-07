@@ -1,178 +1,31 @@
 /* =============================================
-   MYTHERA — Click-based world interaction
+   MYTHERA — Scroll-based editorial experience
    ============================================= */
 
 (function () {
   'use strict';
 
   var body = document.body;
-  var depth = document.getElementById('depth');
-  var surface = document.getElementById('surface');
-
-  /* ---- View state ---- */
-
-  function enterDepth(realmId) {
-    // Hide all chambers, show the right one
-    document.querySelectorAll('.chamber').forEach(function (c) {
-      c.classList.remove('is-active');
-    });
-    var chamber = document.querySelector('[data-chamber="' + realmId + '"]');
-    if (chamber) chamber.classList.add('is-active');
-
-    // Close any open workviews
-    document.querySelectorAll('.workview.is-active').forEach(function (w) {
-      w.classList.remove('is-active');
-    });
-
-    // Update realm nav active state
-    document.querySelectorAll('.depth__realm-link').forEach(function (link) {
-      link.classList.toggle('is-active', link.getAttribute('data-realm') === realmId);
-    });
-
-    // Transition
-    body.classList.add('in-depth');
-    depth.setAttribute('aria-hidden', 'false');
-    depth.scrollTop = 0;
-
-    // Push state so browser back works
-    history.pushState({ realm: realmId }, '', '#realm-' + realmId);
-  }
-
-  function exitDepth() {
-    body.classList.remove('in-depth');
-    depth.setAttribute('aria-hidden', 'true');
-
-    // Close workviews
-    document.querySelectorAll('.workview.is-active').forEach(function (w) {
-      w.classList.remove('is-active');
-    });
-
-    history.pushState({}, '', '#realms');
-  }
-
-  function openWork(workId) {
-    // Close any other open workview in same chamber
-    var activeChamber = document.querySelector('.chamber.is-active');
-    if (!activeChamber) return;
-    activeChamber.querySelectorAll('.workview.is-active').forEach(function (w) {
-      w.classList.remove('is-active');
-    });
-
-    var view = activeChamber.querySelector('[data-workview="' + workId + '"]');
-    if (view) view.classList.add('is-active');
-  }
-
-  function closeWork() {
-    document.querySelectorAll('.workview.is-active').forEach(function (w) {
-      w.classList.remove('is-active');
-    });
-  }
 
 
-  /* ---- Event listeners ---- */
+  /* ---- Nav smooth scrolling ---- */
 
-  // Realm card clicks → enter realm
-  document.querySelectorAll('[data-realm]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      enterDepth(btn.getAttribute('data-realm'));
-    });
-  });
-
-  // Work card clicks from surface → enter realm then open work
-  document.querySelectorAll('[data-enter-work]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var realmId = btn.getAttribute('data-enter-work');
-      var workId = btn.getAttribute('data-work-id');
-      enterDepth(realmId);
-      if (workId) {
-        setTimeout(function () {
-          openWork(workId);
-        }, 400);
-      }
-    });
-  });
-
-  // Back button
-  document.querySelectorAll('[data-back]').forEach(function (btn) {
-    btn.addEventListener('click', exitDepth);
-  });
-
-  // Realm nav links within depth (switch between realms)
-  document.querySelectorAll('.depth__realm-link').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var id = btn.getAttribute('data-realm');
-      enterDepth(id);
-    });
-  });
-
-  // Work node clicks → open work detail
-  document.querySelectorAll('[data-work]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      openWork(btn.getAttribute('data-work'));
-    });
-  });
-
-  // Close work detail
-  document.querySelectorAll('[data-close-work]').forEach(function (btn) {
-    btn.addEventListener('click', closeWork);
-  });
-
-  // Nav links
   document.querySelectorAll('[data-nav]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var action = link.getAttribute('data-nav');
       if (action === 'home') {
         e.preventDefault();
-        if (body.classList.contains('in-depth')) exitDepth();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (action === 'realms') {
+      } else if (action === 'realms' || action === 'works' || action === 'about') {
         e.preventDefault();
-        if (body.classList.contains('in-depth')) exitDepth();
-        setTimeout(function () {
-          document.getElementById('realms').scrollIntoView({ behavior: 'smooth' });
-        }, body.classList.contains('in-depth') ? 600 : 0);
-      } else if (action === 'works') {
-        e.preventDefault();
-        if (body.classList.contains('in-depth')) exitDepth();
-        setTimeout(function () {
-          document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
-        }, body.classList.contains('in-depth') ? 600 : 0);
-      } else if (action === 'about') {
-        e.preventDefault();
-        if (body.classList.contains('in-depth')) exitDepth();
-        setTimeout(function () {
-          document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-        }, body.classList.contains('in-depth') ? 600 : 0);
+        var target = document.getElementById(action);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
 
-  // Browser back/forward
-  window.addEventListener('popstate', function (e) {
-    if (e.state && e.state.realm) {
-      enterDepth(e.state.realm);
-    } else {
-      if (body.classList.contains('in-depth')) {
-        body.classList.remove('in-depth');
-        depth.setAttribute('aria-hidden', 'true');
-      }
-    }
-  });
 
-  // Escape key closes depth or workview
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      var openWorkview = document.querySelector('.workview.is-active');
-      if (openWorkview) {
-        closeWork();
-      } else if (body.classList.contains('in-depth')) {
-        exitDepth();
-      }
-    }
-  });
-
-
-  /* ---- Scroll Reveal (surface only) ---- */
+  /* ---- Scroll Reveal ---- */
 
   function initScrollReveal() {
     var targets = document.querySelectorAll(
@@ -213,7 +66,7 @@
     var ticking = false;
 
     window.addEventListener('scroll', function () {
-      if (ticking || body.classList.contains('in-depth')) return;
+      if (ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
         var y = window.scrollY;
@@ -244,13 +97,6 @@
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduced) {
       initHeroEffects();
-    }
-
-    // Handle direct URL entry with hash
-    var hash = window.location.hash;
-    if (hash.startsWith('#realm-')) {
-      var id = hash.replace('#realm-', '');
-      enterDepth(id);
     }
   });
 
