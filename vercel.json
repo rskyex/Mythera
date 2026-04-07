@@ -3,6 +3,7 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/works/second-self", "destination": "/works/second-self.html" },
-    { "source": "/works/narrative-drift", "destination": "/works/narrative-drift.html" }
+    { "source": "/works/narrative-drift", "destination": "/works/narrative-drift.html" },
+    { "source": "/works/theatre-of-authenticity", "destination": "/works/theatre-of-authenticity.html" }
   ]
 }
