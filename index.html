@@ -10,14 +10,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="MYTHERA">
   <meta property="og:description" content="Explorable worlds for the structures people live inside but cannot see.">
-  <meta property="og:image" content="public/images/mythera-og.png">
+  <meta property="og:image" content="/public/images/mythera-og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="MYTHERA">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MYTHERA">
   <meta name="twitter:description" content="Explorable worlds for the structures people live inside but cannot see.">
-  <meta name="twitter:image" content="public/images/mythera-og.png">
+  <meta name="twitter:image" content="/public/images/mythera-og.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -36,9 +36,9 @@
       <span class="nav__wordmark">MYTHERA</span>
     </a>
     <div class="nav__links">
-      <a href="#about" class="nav__link">About</a>
-      <a href="#gateway" class="nav__link" data-nav="gateway">Realms</a>
+      <a href="#realms" class="nav__link" data-nav="realms">Realms</a>
       <a href="#works" class="nav__link" data-nav="works">Works</a>
+      <a href="#about" class="nav__link" data-nav="about">About</a>
     </div>
   </nav>
 
@@ -69,9 +69,8 @@
         <h1 class="hero__title">
           <img src="public/images/wordmark.png" alt="MYTHERA" class="hero__wordmark-img">
         </h1>
-        <p class="hero__headline">An interpretive studio building interactive worlds<br>across philosophy, culture, memory, and selfhood.</p>
-        <div class="hero__rule"></div>
-        <p class="hero__subtitle">Where hidden structures become explorable:<br>systems, stories, aesthetics, institutions, and the forms of life they produce.</p>
+        <p class="hero__headline">Interactive worlds for the structures<br>people live inside but cannot see.</p>
+        <a href="#works" class="hero__cta" data-nav="works">Explore Works</a>
       </div>
       <div class="hero__scroll-cue">
         <span class="hero__scroll-text">Descend</span>
@@ -85,240 +84,142 @@
       <div class="section-divider__line section-divider__line--right"></div>
     </div>
 
-    <!-- ABOUT MYTHERA -->
+    <!-- THREE REALMS -->
+    <section class="realms" id="realms">
+      <h2 class="realms__heading">The Three Realms</h2>
+
+      <div class="realms__grid">
+
+        <button class="realm-card" data-realm="1" type="button">
+          <div class="realm-card__image">
+            <img src="public/images/mythera-1.png" alt="" class="realm-card__img">
+          </div>
+          <div class="realm-card__body">
+            <span class="realm-card__index">I</span>
+            <h3 class="realm-card__title">Self / Systems / Subject Formation</h3>
+            <p class="realm-card__desc">How institutions, platforms, and invisible architectures produce the subjects who live within them.</p>
+            <span class="realm-card__cta">Enter &rarr;</span>
+          </div>
+        </button>
+
+        <button class="realm-card" data-realm="2" type="button">
+          <div class="realm-card__image">
+            <img src="public/images/mythera-2.png" alt="" class="realm-card__img">
+          </div>
+          <div class="realm-card__body">
+            <span class="realm-card__index">II</span>
+            <h3 class="realm-card__title">Literature / Self / Performance</h3>
+            <p class="realm-card__desc">The unstable border between sincerity and spectacle, personhood and role.</p>
+            <span class="realm-card__cta">Enter &rarr;</span>
+          </div>
+        </button>
+
+        <button class="realm-card" data-realm="3" type="button">
+          <div class="realm-card__image">
+            <img src="public/images/mythera-6.png" alt="" class="realm-card__img">
+          </div>
+          <div class="realm-card__body">
+            <span class="realm-card__index">III</span>
+            <h3 class="realm-card__title">Aesthetics / Interpretation / Form</h3>
+            <p class="realm-card__desc">Making the hidden architecture of literature, music, and cultural form experientially legible.</p>
+            <span class="realm-card__cta">Enter &rarr;</span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <div class="section-divider__line section-divider__line--left"></div>
+      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
+      <div class="section-divider__line section-divider__line--right"></div>
+    </div>
+
+    <!-- FEATURED WORKS -->
+    <section class="works" id="works">
+      <h2 class="works__heading">Works</h2>
+
+      <div class="works__grid">
+
+        <button class="work-card work-card--flagship" data-enter-work="1" data-work-id="second-self" type="button">
+          <span class="work-card__realm">Realm I</span>
+          <span class="work-card__title">Second Self</span>
+          <span class="work-card__desc">An online philosophical card game. Design a society &mdash; its institutions, algorithms, memory systems &mdash; and confront the kind of human subject it produces.</span>
+          <span class="work-card__badge">Flagship</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+        <button class="work-card" data-enter-work="1" data-work-id="narrative-drift" type="button">
+          <span class="work-card__realm">Realm I</span>
+          <span class="work-card__title">Narrative Drift</span>
+          <span class="work-card__desc">A simulation of how ordinary platform choices gradually reshape the self.</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+        <button class="work-card" data-enter-work="2" data-work-id="mishima-atlas" type="button">
+          <span class="work-card__realm">Realm II</span>
+          <span class="work-card__title">Mishima Atlas</span>
+          <span class="work-card__desc">A navigable conceptual map of Mishima's universe across literature, beauty, politics, and death.</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+        <button class="work-card" data-enter-work="1" data-work-id="existential-wager" type="button">
+          <span class="work-card__realm">Realm I &middot; II</span>
+          <span class="work-card__title">Existential Wager</span>
+          <span class="work-card__desc">A simulation of what happens when a principle is lived so faithfully that it becomes theatre.</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+        <button class="work-card" data-enter-work="3" data-work-id="litpulse" type="button">
+          <span class="work-card__realm">Realm III</span>
+          <span class="work-card__title">LitPulse</span>
+          <span class="work-card__desc">An interface for seeing the emotional motion, motifs, and structural pulse of literature.</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+        <button class="work-card" data-enter-work="3" data-work-id="scoreless" type="button">
+          <span class="work-card__realm">Realm III</span>
+          <span class="work-card__title">Scoreless</span>
+          <span class="work-card__desc">A music interface for feeling form, tension, and movement without reading notation.</span>
+          <span class="work-card__cta">Enter &rarr;</span>
+        </button>
+
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <div class="section-divider__line section-divider__line--left"></div>
+      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
+      <div class="section-divider__line section-divider__line--right"></div>
+    </div>
+
+    <!-- ABOUT + CREATOR -->
     <section class="about" id="about">
-      <div class="about__image">
-        <img src="public/images/mythera-3.png" alt="" class="about__img">
-      </div>
-      <div class="about__panel">
-        <span class="about__label">About MYTHERA</span>
-
-        <p class="about__text about__text--lead">
-          MYTHERA is a parent studio for interactive philosophical and cultural works.
-        </p>
-
-        <p class="about__text">
-          It transforms hidden structures of meaning &mdash; selfhood, memory, mediation, interpretation, performance, and subject formation &mdash; into interfaces, simulations, atlases, and digital experiences.
-        </p>
-
-        <p class="about__text">
-          Not simply a portfolio or app collection, MYTHERA is a cross-format studio for making complex cultural and philosophical structures newly legible.
-        </p>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="section-divider__line section-divider__line--left"></div>
-      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
-      <div class="section-divider__line section-divider__line--right"></div>
-    </div>
-
-    <!-- GATEWAY — Three Realms -->
-    <section class="gateway" id="gateway">
-      <h2 class="gateway__heading">The Three Realms</h2>
-
-      <div class="gateway__portals">
-
-        <button class="portal portal--1" data-realm="1" type="button">
-          <div class="portal__image">
-            <img src="public/images/mythera-1.png" alt="" class="portal__img">
-          </div>
-          <div class="portal__content">
-            <span class="portal__index">Realm I</span>
-            <h3 class="portal__title">Self / Systems / Subject Formation</h3>
-            <p class="portal__hook">Works on AI, governance, memory infrastructures, public space, and the social production of the subject.</p>
-            <span class="portal__cta">Enter &rarr;</span>
-          </div>
-        </button>
-
-        <button class="portal portal--2" data-realm="2" type="button">
-          <div class="portal__image">
-            <img src="public/images/mythera-2.png" alt="" class="portal__img">
-          </div>
-          <div class="portal__content">
-            <span class="portal__index">Realm II</span>
-            <h3 class="portal__title">Literature / Self / Performance</h3>
-            <p class="portal__hook">Works on masks, beauty, authenticity, theatricality, death, remainder, and the unstable relation between lived principle and performed selfhood.</p>
-            <span class="portal__cta">Enter &rarr;</span>
-          </div>
-        </button>
-
-        <button class="portal portal--3" data-realm="3" type="button">
-          <div class="portal__image">
-            <img src="public/images/mythera-6.png" alt="" class="portal__img">
-          </div>
-          <div class="portal__content">
-            <span class="portal__index">Realm III</span>
-            <h3 class="portal__title">Cultural Interpretation / Aesthetic Legibility</h3>
-            <p class="portal__hook">Works that make literature, music, and cultural form structurally legible through immersive interpretive interfaces.</p>
-            <span class="portal__cta">Enter &rarr;</span>
-          </div>
-        </button>
-
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="section-divider__line section-divider__line--left"></div>
-      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
-      <div class="section-divider__line section-divider__line--right"></div>
-    </div>
-
-    <!-- WORKS ACROSS THE REALMS -->
-    <section class="works-index" id="works">
-      <h2 class="works-index__heading">Works Across the Realms</h2>
-
-      <!-- Realm I -->
-      <div class="works-index__realm">
-        <h3 class="works-index__realm-title"><span class="works-index__realm-num">I</span> Self / Systems / Subject Formation</h3>
-
-        <div class="works-index__group">
-          <span class="works-index__group-label">Current Works</span>
-          <div class="works-index__items">
-            <div class="works-index__item works-index__item--flagship">
-              <span class="works-index__item-title">Second Self</span>
-              <span class="works-index__item-desc">A flagship philosophical card game about AI, governance, memory, and the kinds of subjects societies produce.</span>
-              <span class="works-index__item-badge">Flagship</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Narrative Drift</span>
-              <span class="works-index__item-desc">A quieter simulation of how ordinary platform choices gradually reshape the self.</span>
-            </div>
-          </div>
+      <div class="about__inner">
+        <div class="about__studio">
+          <span class="about__label">About MYTHERA</span>
+          <p class="about__text about__text--lead">
+            An interpretive studio for interactive philosophical and cultural works.
+          </p>
+          <p class="about__text">
+            Mythera transforms hidden structures of meaning &mdash; selfhood, memory, interpretation, performance, and subject formation &mdash; into interfaces, simulations, atlases, and digital experiences.
+          </p>
         </div>
 
-        <div class="works-index__group">
-          <span class="works-index__group-label">Future Lines</span>
-          <div class="works-index__futures">
-            <span class="works-index__future">Memory Governance</span>
-            <span class="works-index__future">Platform Selfhood</span>
-            <span class="works-index__future">AI Companion Subjectivity</span>
-            <span class="works-index__future">Recommendation Ecology</span>
-            <span class="works-index__future">Algorithmic Legitimacy</span>
+        <div class="about__divider"></div>
+
+        <div class="about__creator">
+          <div class="about__profile">
+            <img src="public/images/profile.jpg" alt="Risa Koyanagi" class="about__profile-img">
           </div>
-        </div>
-      </div>
-
-      <!-- Realm II -->
-      <div class="works-index__realm">
-        <h3 class="works-index__realm-title"><span class="works-index__realm-num">II</span> Literature / Self / Performance</h3>
-
-        <div class="works-index__group">
-          <span class="works-index__group-label">Current Works</span>
-          <div class="works-index__items">
-            <div class="works-index__item">
-              <span class="works-index__item-title">Mishima Atlas</span>
-              <span class="works-index__item-desc">A navigable conceptual map of Yukio Mishima's universe across literature, beauty, politics, embodiment, and death.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Existential Wager</span>
-              <span class="works-index__item-desc">A simulation of what happens when a principle is lived so faithfully that it becomes theatre.</span>
-            </div>
+          <div class="about__creator-info">
+            <p class="about__creator-text">
+              Built by <strong class="about__name">Risa Koyanagi</strong> &mdash; a creator of interpretive worlds working where philosophy, aesthetics, systems, and cultural form meet. Cambridge Future Scholar with design work exhibited internationally.
+            </p>
+            <a href="https://risakoyanagi.com" target="_blank" rel="noopener" class="about__link">
+              risakoyanagi.com <span class="about__link-arrow">&rarr;</span>
+            </a>
           </div>
-        </div>
-
-        <div class="works-index__group">
-          <span class="works-index__group-label">In Development</span>
-          <div class="works-index__items">
-            <div class="works-index__item">
-              <span class="works-index__item-title">Theatre of Authenticity</span>
-              <span class="works-index__item-desc">An experiential work on whether authenticity survives spectatorship and public memory.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Mask / Remainder</span>
-              <span class="works-index__item-desc">A philosophical interface about the gap between the self one constructs and the self that remains.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Confessions of a Mask</span>
-              <span class="works-index__item-desc">An identity-builder in which the more a self is designed, the more its center hollows into pose and surface.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Beautiful Catastrophe</span>
-              <span class="works-index__item-desc">A literary visualization of beauty, destruction, and the desire for ruin as completion.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Remainder</span>
-              <span class="works-index__item-desc">A comparative philosophy interface on what no ideal, system, or self-myth can fully absorb.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Realm III -->
-      <div class="works-index__realm">
-        <h3 class="works-index__realm-title"><span class="works-index__realm-num">III</span> Cultural Interpretation / Aesthetic Legibility</h3>
-
-        <div class="works-index__group">
-          <span class="works-index__group-label">Current Works</span>
-          <div class="works-index__items">
-            <div class="works-index__item">
-              <span class="works-index__item-title">LitPulse</span>
-              <span class="works-index__item-desc">An interface for seeing the emotional motion, motifs, and structural pulse of literature.</span>
-            </div>
-            <div class="works-index__item">
-              <span class="works-index__item-title">Scoreless</span>
-              <span class="works-index__item-desc">A music interface for feeling form, tension, and movement without reading notation.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="works-index__group">
-          <span class="works-index__group-label">Future Lines</span>
-          <div class="works-index__futures">
-            <span class="works-index__future">Underground</span>
-            <span class="works-index__future">Demons / The Possessed</span>
-            <span class="works-index__future">Karamazov / Kirillov / Ivan</span>
-            <span class="works-index__future">Becoming / Geist Engine</span>
-            <span class="works-index__future">The Last Man / Overhuman</span>
-            <span class="works-index__future">Archive of Being</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="section-divider__line section-divider__line--left"></div>
-      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
-      <div class="section-divider__line section-divider__line--right"></div>
-    </div>
-
-    <!-- ORIGIN — Creator signature -->
-    <section class="origin">
-      <div class="origin__left">
-        <div class="origin__profile">
-          <img src="public/images/profile.jpg" alt="Risa Koyanagi" class="origin__profile-img">
-        </div>
-        <p class="origin__text">
-          Mythera is built by <strong class="origin__name">Risa Koyanagi</strong> — a creator of interpretive worlds working where philosophy, aesthetics, systems, and cultural form meet; a Cambridge Future Scholar with design work exhibited internationally.
-        </p>
-      </div>
-      <a href="https://risakoyanagi.com" target="_blank" rel="noopener" class="origin__card">
-        <img src="public/images/risa koyanagi og.png" alt="" class="origin__card-img">
-        <div class="origin__card-body">
-          <span class="origin__card-title">risakoyanagi.com</span>
-          <span class="origin__card-desc">小柳璃紗 — Risa Koyanagi</span>
-        </div>
-        <span class="origin__card-arrow">&rarr;</span>
-      </a>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <div class="section-divider__line section-divider__line--left"></div>
-      <img src="public/images/mythera-8.png" alt="" class="section-divider__img">
-      <div class="section-divider__line section-divider__line--right"></div>
-    </div>
-
-    <!-- CLOSING -->
-    <section class="closing">
-      <div class="closing__bg" aria-hidden="true">
-        <img src="public/images/mythera-4.png" alt="" class="closing__bg-img">
-      </div>
-      <div class="closing__inner">
-        <img src="public/images/logo.png" alt="" class="closing__mark">
-        <p class="closing__statement">What shaped you is not behind you.<br>It is the world you are already inside.</p>
-        <div class="closing__rule"></div>
-        <div class="closing__links">
-          <a href="#" class="closing__link" data-nav="gateway">Enter the Realms</a>
         </div>
       </div>
     </section>
@@ -369,9 +270,9 @@
         <h3 class="chamber__works-label">Works</h3>
 
         <button class="node" data-work="second-self" type="button">
-          <span class="node__format">Strategy Interface</span>
+          <span class="node__format">Philosophical Card Game</span>
           <span class="node__title">Second Self</span>
-          <span class="node__hook">Design institutional systems and watch them shape the subjects who must live inside them.</span>
+          <span class="node__hook">Build a society with philosopher cards, institutional systems, and algorithmic infrastructures. Watch the subjects it produces take form.</span>
         </button>
 
         <button class="node" data-work="narrative-drift" type="button">
@@ -389,10 +290,11 @@
 
       <div class="workview" data-workview="second-self">
         <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Strategy Interface</span>
+        <span class="workview__format">Philosophical Card Game</span>
         <h3 class="workview__title">Second Self</h3>
-        <p class="workview__experience">You design institutional systems — education, surveillance, algorithmic curation, civic infrastructure — and watch them begin to shape the kinds of subjects who must live inside them.</p>
-        <p class="workview__tension">The tension is simple and brutal: the more governable a system becomes, the narrower the freedom of the selves it produces. You are asked not only what kind of system you would build, but what kind of human it would require.</p>
+        <p class="workview__experience">An online card game set in a near-future where algorithmic systems have saturated the fabric of society. You do not simply fight an opponent &mdash; you design a society. You build information environments, shape memory institutions, choose governance structures, and deploy philosopher cards &mdash; Foucault, Arendt, Butler, Stiegler &mdash; not as characters, but as theoretical lenses that alter how the world operates.</p>
+        <p class="workview__experience">Your screen displays a visual subject &mdash; the kind of human your society produces. As turns pass, it changes. An over-optimized recommendation environment may produce a refined but self-surveilling subject. A strong memory archive may grant deep connection to the past while eroding the freedom to forget. Victory is not about destroying an opponent &mdash; it is a tension between stability, freedom, legitimacy, innovation, and democratic capacity. No value can be maximized without cost to another.</p>
+        <p class="workview__tension">The central question: when systems begin to participate not just in governing behaviour, but in the very formation of selfhood &mdash; what kind of human emerges? Every institution teaches a way of living. Every system produces a kind of self. Every society, at its deepest level, is always making a second self.</p>
       </div>
 
       <div class="workview" data-workview="narrative-drift">

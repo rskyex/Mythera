@@ -47,7 +47,7 @@
       w.classList.remove('is-active');
     });
 
-    history.pushState({}, '', '#gateway');
+    history.pushState({}, '', '#realms');
   }
 
   function openWork(workId) {
@@ -71,10 +71,24 @@
 
   /* ---- Event listeners ---- */
 
-  // Portal clicks → enter realm
+  // Realm card clicks → enter realm
   document.querySelectorAll('[data-realm]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       enterDepth(btn.getAttribute('data-realm'));
+    });
+  });
+
+  // Work card clicks from surface → enter realm then open work
+  document.querySelectorAll('[data-enter-work]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var realmId = btn.getAttribute('data-enter-work');
+      var workId = btn.getAttribute('data-work-id');
+      enterDepth(realmId);
+      if (workId) {
+        setTimeout(function () {
+          openWork(workId);
+        }, 400);
+      }
     });
   });
 
@@ -111,17 +125,23 @@
         e.preventDefault();
         if (body.classList.contains('in-depth')) exitDepth();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (action === 'gateway') {
+      } else if (action === 'realms') {
         e.preventDefault();
         if (body.classList.contains('in-depth')) exitDepth();
         setTimeout(function () {
-          document.getElementById('gateway').scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('realms').scrollIntoView({ behavior: 'smooth' });
         }, body.classList.contains('in-depth') ? 600 : 0);
       } else if (action === 'works') {
         e.preventDefault();
         if (body.classList.contains('in-depth')) exitDepth();
         setTimeout(function () {
           document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+        }, body.classList.contains('in-depth') ? 600 : 0);
+      } else if (action === 'about') {
+        e.preventDefault();
+        if (body.classList.contains('in-depth')) exitDepth();
+        setTimeout(function () {
+          document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
         }, body.classList.contains('in-depth') ? 600 : 0);
       }
     });
@@ -142,8 +162,8 @@
   // Escape key closes depth or workview
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      var openWork = document.querySelector('.workview.is-active');
-      if (openWork) {
+      var openWorkview = document.querySelector('.workview.is-active');
+      if (openWorkview) {
         closeWork();
       } else if (body.classList.contains('in-depth')) {
         exitDepth();
@@ -156,11 +176,9 @@
 
   function initScrollReveal() {
     var targets = document.querySelectorAll(
-      '.about__label, .about__text, ' +
-      '.origin__text, .origin__rule, ' +
-      '.gateway__heading, .gateway__subtitle, .portal, ' +
-      '.works-index__heading, .works-index__realm, ' +
-      '.closing__mark, .closing__statement, .closing__links'
+      '.about__label, .about__text, .about__creator, ' +
+      '.realms__heading, .realm-card, ' +
+      '.works__heading, .work-card'
     );
 
     targets.forEach(function (el) { el.classList.add('reveal'); });
