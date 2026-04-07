@@ -91,41 +91,38 @@
 
       <div class="realms__grid">
 
-        <button class="realm-card" data-realm="1" type="button">
+        <div class="realm-card">
           <div class="realm-card__image">
             <img src="public/images/mythera-1.png" alt="" class="realm-card__img">
           </div>
           <div class="realm-card__body">
             <span class="realm-card__index">I</span>
             <h3 class="realm-card__title">Self / Systems / Subject Formation</h3>
-            <p class="realm-card__desc">How institutions, platforms, and invisible architectures produce the subjects who live within them.</p>
-            <span class="realm-card__cta">Enter &rarr;</span>
+            <p class="realm-card__desc">The invisible architectures that shape who we become.</p>
           </div>
-        </button>
+        </div>
 
-        <button class="realm-card" data-realm="2" type="button">
+        <div class="realm-card">
           <div class="realm-card__image">
             <img src="public/images/mythera-2.png" alt="" class="realm-card__img">
           </div>
           <div class="realm-card__body">
             <span class="realm-card__index">II</span>
             <h3 class="realm-card__title">Literature / Self / Performance</h3>
-            <p class="realm-card__desc">The unstable border between sincerity and spectacle, personhood and role.</p>
-            <span class="realm-card__cta">Enter &rarr;</span>
+            <p class="realm-card__desc">Where sincerity meets spectacle and identity becomes role.</p>
           </div>
-        </button>
+        </div>
 
-        <button class="realm-card" data-realm="3" type="button">
+        <div class="realm-card">
           <div class="realm-card__image">
             <img src="public/images/mythera-6.png" alt="" class="realm-card__img">
           </div>
           <div class="realm-card__body">
             <span class="realm-card__index">III</span>
             <h3 class="realm-card__title">Aesthetics / Interpretation / Form</h3>
-            <p class="realm-card__desc">Making the hidden architecture of literature, music, and cultural form experientially legible.</p>
-            <span class="realm-card__cta">Enter &rarr;</span>
+            <p class="realm-card__desc">The hidden structure of beauty made experientially legible.</p>
           </div>
-        </button>
+        </div>
 
       </div>
     </section>
@@ -142,54 +139,48 @@
 
       <div class="works__grid">
 
-        <button class="work-card work-card--flagship work-card--has-image" data-enter-work="1" data-work-id="second-self" type="button">
+        <div class="work-card work-card--flagship work-card--has-image">
           <img src="public/images/secondself_og.png" alt="" class="work-card__image">
           <div class="work-card__body">
             <span class="work-card__realm">Realm I</span>
             <span class="work-card__title">Second Self</span>
             <span class="work-card__desc">An online philosophical card game. Design a society &mdash; its institutions, algorithms, memory systems &mdash; and confront the kind of human subject it produces.</span>
             <span class="work-card__badge">Flagship</span>
-            <span class="work-card__cta">Enter &rarr;</span>
           </div>
-        </button>
+        </div>
 
-        <button class="work-card work-card--has-image" data-enter-work="1" data-work-id="narrative-drift" type="button">
+        <div class="work-card work-card--has-image">
           <img src="public/images/narrative drift-og.png" alt="" class="work-card__image">
           <div class="work-card__body">
             <span class="work-card__realm">Realm I</span>
             <span class="work-card__title">Narrative Drift</span>
             <span class="work-card__desc">A simulation of how ordinary platform choices gradually reshape the self.</span>
-            <span class="work-card__cta">Enter &rarr;</span>
           </div>
-        </button>
+        </div>
 
-        <button class="work-card" data-enter-work="2" data-work-id="mishima-atlas" type="button">
+        <div class="work-card">
           <span class="work-card__realm">Realm II</span>
           <span class="work-card__title">Mishima Atlas</span>
           <span class="work-card__desc">A navigable conceptual map of Mishima's universe across literature, beauty, politics, and death.</span>
-          <span class="work-card__cta">Enter &rarr;</span>
-        </button>
+        </div>
 
-        <button class="work-card" data-enter-work="1" data-work-id="existential-wager" type="button">
+        <div class="work-card">
           <span class="work-card__realm">Realm I &middot; II</span>
           <span class="work-card__title">Existential Wager</span>
           <span class="work-card__desc">A simulation of what happens when a principle is lived so faithfully that it becomes theatre.</span>
-          <span class="work-card__cta">Enter &rarr;</span>
-        </button>
+        </div>
 
-        <button class="work-card" data-enter-work="3" data-work-id="litpulse" type="button">
+        <div class="work-card">
           <span class="work-card__realm">Realm III</span>
           <span class="work-card__title">LitPulse</span>
           <span class="work-card__desc">An interface for seeing the emotional motion, motifs, and structural pulse of literature.</span>
-          <span class="work-card__cta">Enter &rarr;</span>
-        </button>
+        </div>
 
-        <button class="work-card" data-enter-work="3" data-work-id="scoreless" type="button">
+        <div class="work-card">
           <span class="work-card__realm">Realm III</span>
           <span class="work-card__title">Scoreless</span>
           <span class="work-card__desc">A music interface for feeling form, tension, and movement without reading notation.</span>
-          <span class="work-card__cta">Enter &rarr;</span>
-        </button>
+        </div>
 
       </div>
     </section>
@@ -240,179 +231,6 @@
         <p class="footer__rights">&copy; All rights reserved. <a href="https://risakoyanagi.com" target="_blank" rel="noopener" class="footer__author-link">Risa Koyanagi</a></p>
       </div>
     </footer>
-
-  </div>
-
-
-  <!-- ============================================================
-       DEPTH — Realm chambers
-       ============================================================ -->
-  <div class="depth" id="depth" aria-hidden="true">
-
-    <button class="depth__back" type="button" data-back>
-      <span class="depth__back-arrow">&larr;</span>
-      <span class="depth__back-text">Return</span>
-    </button>
-
-    <!-- Realm navigation inside depth -->
-    <div class="depth__realms-nav">
-      <button class="depth__realm-link" data-realm="1" type="button">I</button>
-      <button class="depth__realm-link" data-realm="2" type="button">II</button>
-      <button class="depth__realm-link" data-realm="3" type="button">III</button>
-    </div>
-
-    <!-- ====== CHAMBER 1 — Self & Systems ====== -->
-    <div class="chamber chamber--1" data-chamber="1">
-      <div class="chamber__bg">
-        <img src="public/images/mythera-1.png" alt="" class="chamber__bg-img">
-      </div>
-      <div class="chamber__overlay chamber__overlay--1"></div>
-
-      <div class="chamber__intro">
-        <span class="chamber__index">Realm I</span>
-        <h2 class="chamber__title">Systems, Memory &amp;<br>the Making of the Self</h2>
-        <p class="chamber__address">No one becomes a self in isolation. We are composed through schools, interfaces, platforms, states, institutions, and routines that feel external until we recognize how deeply they live within us. This realm makes visible the systems that do not simply regulate subjects, but produce them.</p>
-      </div>
-
-      <div class="chamber__works">
-        <h3 class="chamber__works-label">Works</h3>
-
-        <button class="node" data-work="second-self" type="button">
-          <span class="node__format">Philosophical Card Game</span>
-          <span class="node__title">Second Self</span>
-          <span class="node__hook">Build a society with philosopher cards, institutional systems, and algorithmic infrastructures. Watch the subjects it produces take form.</span>
-        </button>
-
-        <button class="node" data-work="narrative-drift" type="button">
-          <span class="node__format">Simulation of Drift</span>
-          <span class="node__title">Narrative Drift</span>
-          <span class="node__hook">Make ordinary choices. Watch patterns accumulate. Discover that transformation rarely arrives as crisis.</span>
-        </button>
-
-        <button class="node" data-work="existential-wager" type="button">
-          <span class="node__format">Philosophical Simulation</span>
-          <span class="node__title">Existential Wager</span>
-          <span class="node__hook">Commit to an ideal without reserve. Discover whether fidelity becomes theatre.</span>
-        </button>
-      </div>
-
-      <div class="workview" data-workview="second-self">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Philosophical Card Game</span>
-        <h3 class="workview__title">Second Self</h3>
-        <p class="workview__experience">An online card game set in a near-future where algorithmic systems have saturated the fabric of society. You do not simply fight an opponent &mdash; you design a society. You build information environments, shape memory institutions, choose governance structures, and deploy philosopher cards &mdash; Foucault, Arendt, Butler, Stiegler &mdash; not as characters, but as theoretical lenses that alter how the world operates.</p>
-        <p class="workview__experience">Your screen displays a visual subject &mdash; the kind of human your society produces. As turns pass, it changes. An over-optimized recommendation environment may produce a refined but self-surveilling subject. A strong memory archive may grant deep connection to the past while eroding the freedom to forget. Victory is not about destroying an opponent &mdash; it is a tension between stability, freedom, legitimacy, innovation, and democratic capacity. No value can be maximized without cost to another.</p>
-        <p class="workview__tension">The central question: when systems begin to participate not just in governing behaviour, but in the very formation of selfhood &mdash; what kind of human emerges? Every institution teaches a way of living. Every system produces a kind of self. Every society, at its deepest level, is always making a second self.</p>
-      </div>
-
-      <div class="workview" data-workview="narrative-drift">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Simulation of Drift</span>
-        <h3 class="workview__title">Narrative Drift</h3>
-        <p class="workview__experience">You make ordinary choices. What to read. What to skip. What to reward. What to forget. Nothing feels decisive. Then time passes. Patterns accumulate. A self takes form.</p>
-        <p class="workview__tension">The discovery is that transformation rarely arrives as crisis. More often it arrives as repetition. Drift works precisely because it feels too small to notice while it is happening.</p>
-      </div>
-
-      <div class="workview" data-workview="existential-wager">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Philosophical Simulation</span>
-        <h3 class="workview__title">Existential Wager</h3>
-        <p class="workview__experience">You choose an ideal — truth, beauty, justice, authenticity — and commit to it without reserve. The simulation tests that commitment across escalating situations, each forcing the ideal into action.</p>
-        <p class="workview__tension">The wager is whether devotion to an ideal can remain living conviction once it becomes habit, posture, or doctrine. At what point does fidelity become theatre? At what point was it always theatre?</p>
-      </div>
-    </div>
-
-    <!-- ====== CHAMBER 2 — Literature & Performance ====== -->
-    <div class="chamber chamber--2" data-chamber="2">
-      <div class="chamber__bg">
-        <img src="public/images/mythera-2.png" alt="" class="chamber__bg-img">
-      </div>
-      <div class="chamber__overlay chamber__overlay--2"></div>
-
-      <div class="chamber__intro">
-        <span class="chamber__index">Realm II</span>
-        <h2 class="chamber__title">Literature, Performance &amp;<br>the Unfinished Self</h2>
-        <p class="chamber__address">This realm inhabits the unstable border between confession and construction, sincerity and performance, personhood and role. It asks what happens when identity is not something one possesses, but something one enacts — repeatedly, aesthetically, and often before an audience.</p>
-      </div>
-
-      <div class="chamber__works">
-        <h3 class="chamber__works-label">Works</h3>
-
-        <button class="node" data-work="mishima-atlas" type="button">
-          <span class="node__format">Atlas / Interpretation Interface</span>
-          <span class="node__title">Mishima Atlas</span>
-          <span class="node__hook">Move through beauty, death, politics, and spectacle as one contested terrain. To read it is already to take a position.</span>
-        </button>
-
-        <button class="node" data-work="existential-wager-2" type="button">
-          <span class="node__format">Philosophical Simulation</span>
-          <span class="node__title">Existential Wager</span>
-          <span class="node__hook">The more sincerely you try to appear sincere, the more sincerity itself becomes unstable.</span>
-        </button>
-      </div>
-
-      <div class="workview" data-workview="mishima-atlas">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Atlas / Interpretation Interface</span>
-        <h3 class="workview__title">Mishima Atlas</h3>
-        <p class="workview__experience">You move through the territories of Mishima's world — beauty, death, politics, spectacle, emperor, remainder — as an interpretive landscape. Writing, action, contradiction, and afterlife appear not as separate topics, but as one contested terrain.</p>
-        <p class="workview__tension">The encounter is with a life that refused to separate art from action, performance from conviction, or aesthetics from danger. You cannot map this world from nowhere. To read it is already to take a position within it.</p>
-      </div>
-
-      <div class="workview" data-workview="existential-wager-2">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Philosophical Simulation</span>
-        <h3 class="workview__title">Existential Wager</h3>
-        <p class="workview__experience">Here the wager turns specifically toward performance. The more visibly you enact your commitment, the more commitment begins to resemble theatre. The more sincerely you try to appear sincere, the more sincerity itself becomes unstable.</p>
-        <p class="workview__tension">This realm asks whether the self can ever stand outside its own staging — or whether every ideal, once lived publicly, acquires a mask.</p>
-      </div>
-    </div>
-
-    <!-- ====== CHAMBER 3 — Aesthetic Legibility ====== -->
-    <div class="chamber chamber--3" data-chamber="3">
-      <div class="chamber__bg">
-        <img src="public/images/mythera-6.png" alt="" class="chamber__bg-img">
-      </div>
-      <div class="chamber__overlay chamber__overlay--3"></div>
-
-      <div class="chamber__intro">
-        <span class="chamber__index">Realm III</span>
-        <h2 class="chamber__title">Aesthetics, Interpretation &amp;<br>Cultural Form</h2>
-        <p class="chamber__address">You have always felt what literature and music do. What is harder to see is how they do it. This realm builds interpretive instruments for perceiving the hidden architecture of cultural form: rhythm, tension, pacing, repetition, release, tonal pressure, emotional design. Not by reducing art to data, but by making form experientially legible.</p>
-      </div>
-
-      <div class="chamber__works">
-        <h3 class="chamber__works-label">Works</h3>
-
-        <button class="node" data-work="litpulse" type="button">
-          <span class="node__format">Literary Interface</span>
-          <span class="node__title">LitPulse</span>
-          <span class="node__hook">Enter a literary work as a field of movement. What feels intuitive while reading becomes newly visible as structure.</span>
-        </button>
-
-        <button class="node" data-work="scoreless" type="button">
-          <span class="node__format">Music Interface</span>
-          <span class="node__title">Scoreless</span>
-          <span class="node__hook">Encounter music as navigable space. Legibility emerges without score-reading or specialist expertise.</span>
-        </button>
-      </div>
-
-      <div class="workview" data-workview="litpulse">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Literary Interface</span>
-        <h3 class="workview__title">LitPulse</h3>
-        <p class="workview__experience">You enter a literary work as a field of movement. Rhythm becomes visible. Tension becomes spatial. Pacing becomes something you can cross, inhabit, and compare.</p>
-        <p class="workview__tension">The insight is that literature does not move us by content alone. It moves through arrangement, pressure, delay, recurrence, and form. What feels intuitive while reading becomes newly visible as structure.</p>
-      </div>
-
-      <div class="workview" data-workview="scoreless">
-        <button class="workview__close" data-close-work type="button">&times;</button>
-        <span class="workview__format">Music Interface</span>
-        <h3 class="workview__title">Scoreless</h3>
-        <p class="workview__experience">You listen to music and encounter its form as space. Not notation. Not waveform. A navigable architecture of tension, variation, return, suspension, and release.</p>
-        <p class="workview__tension">The shift is simple but irreversible: music stops being only something you receive in time and becomes something you inhabit as structure. Legibility emerges without requiring score-reading, technical training, or specialist expertise.</p>
-      </div>
-    </div>
 
   </div>
 
