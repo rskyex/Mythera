@@ -512,6 +512,29 @@ body.in-depth .depth__realms-nav {
   text-align: left;
   transition: border-color 0.6s, transform 0.6s, box-shadow 0.6s;
   position: relative;
+  overflow: hidden;
+}
+
+.work-card--has-image {
+  padding: 0;
+}
+
+.work-card--has-image .work-card__body {
+  padding: 1.4rem 1.8rem;
+  position: relative;
+}
+
+.work-card__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  display: block;
+  transition: transform 1s ease;
+}
+
+.work-card:hover .work-card__image {
+  transform: scale(1.03);
 }
 
 .work-card:hover {
@@ -558,7 +581,7 @@ body.in-depth .depth__realms-nav {
 
 .work-card__badge {
   position: absolute;
-  top: 1.6rem;
+  top: 1.4rem;
   right: 1.8rem;
   font-size: 0.5rem;
   font-weight: 400;
@@ -681,20 +704,44 @@ body.in-depth .depth__realms-nav {
   margin-bottom: 0.8rem;
 }
 
-.about__link {
-  display: inline-block;
+.about__card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--color-glass-edge);
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 6px;
+  max-width: 280px;
+  transition: border-color 0.6s, box-shadow 0.6s, transform 0.6s;
+}
+
+.about__card:hover {
+  border-color: rgba(196,169,110,0.25);
+  box-shadow: 0 12px 40px rgba(5,8,7,0.5);
+  transform: translateY(-3px);
+}
+
+.about__card-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  display: block;
+}
+
+.about__card-label {
+  display: block;
+  padding: 0.8rem 1rem;
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--color-silver);
-  border-bottom: 1px solid rgba(196,169,110,0.2);
-  padding-bottom: 2px;
-  transition: color 0.6s, border-color 0.6s;
+  transition: color 0.6s;
 }
 
-.about__link:hover {
+.about__card:hover .about__card-label {
   color: var(--color-accent);
-  border-bottom-color: rgba(196,169,110,0.5);
 }
 
 .about__link-arrow {
@@ -703,7 +750,7 @@ body.in-depth .depth__realms-nav {
   transition: transform 0.4s;
 }
 
-.about__link:hover .about__link-arrow {
+.about__card:hover .about__link-arrow {
   transform: translateX(3px);
 }
 
@@ -884,6 +931,8 @@ body.in-depth .depth__realms-nav {
   bottom: 0; right: 0;
   width: 50%;
   max-width: 520px;
+  max-height: 80vh;
+  overflow-y: auto;
   z-index: 10;
   padding: 3rem;
   background: var(--color-glass);
@@ -959,6 +1008,7 @@ body.in-depth .depth__realms-nav {
   .works { padding: 4rem 2rem 3rem; }
   .about { padding: 4rem 2rem 3rem; }
   .about__creator { flex-direction: column; text-align: center; }
+  .about__card { margin: 0 auto; }
   .chamber__intro, .chamber__works { margin-right: 5%; max-width: none; margin-left: 5%; }
   .chamber__overlay {
     background:
